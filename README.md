@@ -1,10 +1,6 @@
-================================================================================
-KIRO FOR LIFE SCIENCES — TESTER DEPLOYMENT GUIDE
-================================================================================
+# KIRO FOR LIFE SCIENCES — TESTER DEPLOYMENT GUIDE
 
-================================================================================
-WHAT IS THIS?
-================================================================================
+## WHAT IS THIS?
 
 Kiro for Life Sciences is a comprehensive Power package that turns Kiro into
 a full-featured life sciences development environment. It provides:
@@ -23,94 +19,101 @@ The architecture is modular: one central Power acts as the hub, and users
 install only the MCP servers they need. Each server is a standalone Python
 package runnable via `uvx`.
 
-Disciplines covered:
-  Genomics & Sequencing | Proteomics | Structural Biology | Pathways |
-  Ontologies | Clinical & Pharma | Model Organisms | Molecular Biology |
-  Computational Chemistry | Immunology | Microbiology & Metagenomics |
-  Metabolomics | Epigenomics | Imaging & Microscopy | Agriculture & Plants |
-  Ecology & Environment | Neuroscience | Cell Biology | Healthcare Standards |
-  Biobanking | Pipelines | Data Standards | Cloud & HPC | AI/ML
+**Disciplines covered:**
 
-What you can do with it:
-  - Search and query 100+ life sciences databases from within Kiro
-  - Run bioinformatics pipelines (nf-core, WDL, CWL) via AWS HealthOmics
-  - Design PCR primers and cloning strategies
-  - Perform molecular docking and ADMET predictions
-  - Analyze antibody sequences and predict epitopes
-  - Submit BLAST searches and multiple sequence alignments
-  - Validate data standards (SBML, ISA-Tab, MAGE-TAB, BioPAX)
-  - Exchange clinical data via FHIR, HL7, and OMOP CDM
-  - Submit compute jobs to AWS Batch, Terra, and Galaxy
-  - Run protein structure predictions with ESM and AlphaFold
-  - Extract biomedical entities from text with BioNLP
-  - Cross-reference gene-disease associations across multiple databases
-  - And much more...
+Genomics & Sequencing | Proteomics | Structural Biology | Pathways |
+Ontologies | Clinical & Pharma | Model Organisms | Molecular Biology |
+Computational Chemistry | Immunology | Microbiology & Metagenomics |
+Metabolomics | Epigenomics | Imaging & Microscopy | Agriculture & Plants |
+Ecology & Environment | Neuroscience | Cell Biology | Healthcare Standards |
+Biobanking | Pipelines | Data Standards | Cloud & HPC | AI/ML
+
+**What you can do with it:**
+
+- Search and query 100+ life sciences databases from within Kiro
+- Run bioinformatics pipelines (nf-core, WDL, CWL) via AWS HealthOmics
+- Design PCR primers and cloning strategies
+- Perform molecular docking and ADMET predictions
+- Analyze antibody sequences and predict epitopes
+- Submit BLAST searches and multiple sequence alignments
+- Validate data standards (SBML, ISA-Tab, MAGE-TAB, BioPAX)
+- Exchange clinical data via FHIR, HL7, and OMOP CDM
+- Submit compute jobs to AWS Batch, Terra, and Galaxy
+- Run protein structure predictions with ESM and AlphaFold
+- Extract biomedical entities from text with BioNLP
+- Cross-reference gene-disease associations across multiple databases
+- And much more...
 
 
-================================================================================
-PART 1: DEPLOYMENT INSTRUCTIONS
-================================================================================
+## PART 1: DEPLOYMENT INSTRUCTIONS
 
-Prerequisites:
+**Prerequisites:**
 - Kiro IDE installed
 - Python 3.10 or higher
-- uv package manager (install: curl -LsSf https://astral.sh/uv/install.sh | sh)
+- uv package manager (install: `curl -LsSf https://astral.sh/uv/install.sh | sh`)
 
-Step 1: Unzip the package
--------------------------
+### Step 1: Unzip the package
+
 Unzip kiro-life-sciences.zip to a location of your choice:
 
-    unzip kiro-life-sciences.zip -d ~/kiro-life-sciences-project
-    cd ~/kiro-life-sciences-project/KiroLS
+```bash
+unzip kiro-life-sciences.zip -d ~/kiro-life-sciences-project
+cd ~/kiro-life-sciences-project/KiroLS
+```
 
-Step 2: Create a virtual environment and install packages
----------------------------------------------------------
-    uv venv .venv
-    source .venv/bin/activate
+### Step 2: Create a virtual environment and install packages
 
-    # Install the shared base package first
-    uv pip install -e ./life-sciences-common
+```bash
+uv venv .venv
+source .venv/bin/activate
 
-    # Install the central Power package
-    uv pip install -e "./kiro-life-sciences[dev]"
+# Install the shared base package first
+uv pip install -e ./life-sciences-common
 
-    # Install whichever MCP servers you want to test (pick any/all):
-    uv pip install -e ./life-sciences-genomics
-    uv pip install -e ./life-sciences-proteomics
-    uv pip install -e ./life-sciences-structural
-    uv pip install -e ./life-sciences-pathways
-    uv pip install -e ./life-sciences-ontologies
-    uv pip install -e ./life-sciences-clinical
-    uv pip install -e ./life-sciences-model-organisms
-    uv pip install -e ./life-sciences-molbio
-    uv pip install -e ./life-sciences-cheminformatics
-    uv pip install -e ./life-sciences-immunology
-    uv pip install -e ./life-sciences-microbiology
-    uv pip install -e ./life-sciences-metabolomics
-    uv pip install -e ./life-sciences-epigenomics
-    uv pip install -e ./life-sciences-imaging
-    uv pip install -e ./life-sciences-agriculture
-    uv pip install -e ./life-sciences-ecology
-    uv pip install -e ./life-sciences-neuroscience
-    uv pip install -e ./life-sciences-cellbiology
-    uv pip install -e ./life-sciences-healthcare
-    uv pip install -e ./life-sciences-biobanking
-    uv pip install -e ./life-sciences-pipelines
-    uv pip install -e ./life-sciences-datastandards
-    uv pip install -e ./life-sciences-cloud
-    uv pip install -e ./life-sciences-aiml
+# Install the central Power package
+uv pip install -e "./kiro-life-sciences[dev]"
 
-Step 3: Copy the Power into Kiro
----------------------------------
-    cp -r kiro-life-sciences/ ~/.kiro/powers/kiro-life-sciences/
+# Install whichever MCP servers you want to test (pick any/all):
+uv pip install -e ./life-sciences-genomics
+uv pip install -e ./life-sciences-proteomics
+uv pip install -e ./life-sciences-structural
+uv pip install -e ./life-sciences-pathways
+uv pip install -e ./life-sciences-ontologies
+uv pip install -e ./life-sciences-clinical
+uv pip install -e ./life-sciences-model-organisms
+uv pip install -e ./life-sciences-molbio
+uv pip install -e ./life-sciences-cheminformatics
+uv pip install -e ./life-sciences-immunology
+uv pip install -e ./life-sciences-microbiology
+uv pip install -e ./life-sciences-metabolomics
+uv pip install -e ./life-sciences-epigenomics
+uv pip install -e ./life-sciences-imaging
+uv pip install -e ./life-sciences-agriculture
+uv pip install -e ./life-sciences-ecology
+uv pip install -e ./life-sciences-neuroscience
+uv pip install -e ./life-sciences-cellbiology
+uv pip install -e ./life-sciences-healthcare
+uv pip install -e ./life-sciences-biobanking
+uv pip install -e ./life-sciences-pipelines
+uv pip install -e ./life-sciences-datastandards
+uv pip install -e ./life-sciences-cloud
+uv pip install -e ./life-sciences-aiml
+```
 
-    This makes the Power available in Kiro's Powers panel with its skills,
-    steering files, and onboarding dashboard.
+### Step 3: Copy the Power into Kiro
 
-Step 4: Configure MCP servers in your workspace
-------------------------------------------------
-Create or edit .kiro/settings/mcp.json in your Kiro workspace:
+```bash
+cp -r kiro-life-sciences/ ~/.kiro/powers/kiro-life-sciences/
+```
 
+This makes the Power available in Kiro's Powers panel with its skills,
+steering files, and onboarding dashboard.
+
+### Step 4: Configure MCP servers in your workspace
+
+Create or edit `.kiro/settings/mcp.json` in your Kiro workspace:
+
+```json
 {
   "mcpServers": {
     "life-sciences-genomics": {
@@ -124,14 +127,16 @@ Create or edit .kiro/settings/mcp.json in your Kiro workspace:
     }
   }
 }
+```
 
-Replace /path/to/KiroLS/ with the actual path where you unzipped.
+Replace `/path/to/KiroLS/` with the actual path where you unzipped.
 Add only the servers you installed in Step 2.
 
-Step 5: Configure credentials (optional)
------------------------------------------
+### Step 5: Configure credentials (optional)
+
 For databases that require API keys, add env vars:
 
+```json
 {
   "mcpServers": {
     "life-sciences-genomics": {
@@ -149,747 +154,386 @@ For databases that require API keys, add env vars:
     }
   }
 }
+```
 
-Step 6: Verify installation
-----------------------------
+### Step 6: Verify installation
+
 Run the test suite to confirm everything works:
 
-    cd ~/kiro-life-sciences-project/KiroLS
-    source .venv/bin/activate
-    pytest kiro-life-sciences/tests/ -q
-    pytest life-sciences-common/tests/ -q
+```bash
+cd ~/kiro-life-sciences-project/KiroLS
+source .venv/bin/activate
+pytest kiro-life-sciences/tests/ -q
+pytest life-sciences-common/tests/ -q
+```
 
 Expected: 338+ tests passing for kiro-life-sciences, 32 for life-sciences-common.
 
-Step 7: Test in Kiro
----------------------
+### Step 7: Test in Kiro
+
 1. Open Kiro
 2. Activate the "kiro-life-sciences" Power from the Powers panel
 3. Try asking: "Search NCBI for BRCA1" or "Look up TP53 in UniProt"
 4. The Power's tools should be available in chat
 
 
-================================================================================
-PART 2: PACKAGE CONTENTS BY SUBDIRECTORY
-================================================================================
+## PART 2: PACKAGE CONTENTS
 
-kiro-life-sciences/                    [CENTRAL POWER - Hub]
-├── POWER.md                           Documentation and getting-started guide
-├── pyproject.toml                     Package config (pydantic, httpx, pytest, hypothesis)
-├── bundle-manifest.json               Declares all 24 MCP servers, 10 skills, 16 steering files
-├── skills/                            10 domain-specific skill files
-│   ├── bioinformatics-file-formats.md    FASTA, FASTQ, BAM, VCF, GFF, BED, DICOM, SBML formats
-│   ├── genomics-pipeline-best-practices.md  WDL/Nextflow/CWL design patterns
-│   ├── data-compliance.md                HIPAA, GDPR, GxP, MIAME, MINSEQE
-│   ├── clinical-interoperability.md      FHIR, HL7, OMOP CDM
-│   ├── ecological-data-analysis.md       Species distribution, biodiversity, eDNA
-│   ├── cheminformatics-best-practices.md SMILES, InChI, Lipinski, SAR
-│   ├── biomedical-imaging.md             Segmentation, feature extraction, DICOM
-│   ├── immunology-vaccine-design.md      Epitope prediction, MHC binding, antibodies
-│   ├── metabolomics-analysis.md          Metabolite ID, spectral matching
-│   └── single-cell-analysis.md           QC, clustering, trajectory inference
-├── steering/                          16 step-by-step workflow guides
-│   ├── variant-calling-pipeline.md       HealthOmics variant calling setup
-│   ├── gene-disease-associations.md      ClinVar → OMIM → HPO cross-referencing
-│   ├── protein-structure-analysis.md     PDB → AlphaFold → CATH workflows
-│   ├── pipeline-import-healthomics.md    Import nf-core/WDL into HealthOmics
-│   ├── resource-catalog-browsing.md      How to search/browse the catalog
-│   ├── fhir-clinical-integration.md      FHIR + OMOP CDM workflows
-│   ├── species-distribution-analysis.md  GBIF → IUCN → iNaturalist
-│   ├── metabolite-identification.md      HMDB → MetaboLights → MassBank
-│   ├── microbiome-analysis.md            SILVA → QIIME 2 → MG-RAST
-│   ├── compound-screening.md             PubChem → RDKit → ZINC → docking
-│   ├── biomedical-image-analysis.md      OMERO → CellProfiler → ImageJ
-│   ├── molecular-docking.md              PDB → ligand prep → SwissDock
-│   ├── primer-design-cloning.md          Primer3 → PrimerBLAST → REBASE
-│   ├── single-cell-rnaseq.md             CellxGene → expression analysis
-│   ├── epigenomics-analysis.md           IHEC → Roadmap → ENCODE
-│   └── amr-analysis.md                   CARD → BV-BRC resistance profiling
-└── src/kiro_life_sciences/            Core Python modules
-    ├── models/                        Pydantic data models (manifest, catalog)
-    ├── catalog/                       Resource catalog engine (search, browse, filter)
-    ├── dashboard/                     Onboarding dashboard renderer
-    ├── credentials/                   Credential manager (${secret:key} in mcp.json)
-    ├── installer/                     Bundle installer, dependency resolver, updater
-    └── skills/                        Cross-database search skill
+### kiro-life-sciences/ — Central Power Hub
 
-life-sciences-common/                  [SHARED BASE PACKAGE]
-├── BaseLifeSciencesServer             Async HTTP client with retry logic
-├── Error classes                      RateLimitError, AuthenticationError, NotFoundError, etc.
-└── Exponential backoff                429 retry, 5xx retry, timeout retry
+| Component | Description |
+|-----------|-------------|
+| `POWER.md` | Documentation and getting-started guide |
+| `pyproject.toml` | Package config (pydantic, httpx, pytest, hypothesis) |
+| `bundle-manifest.json` | Declares all 24 MCP servers, 10 skills, 16 steering files |
+| `skills/` | 10 domain-specific skill files |
+| `steering/` | 16 step-by-step workflow guides |
+| `src/kiro_life_sciences/` | Core Python modules (catalog, dashboard, credentials, installer, skills) |
 
-life-sciences-genomics/                [MCP SERVER - Genomics & Sequencing]
-├── 18 tools                           NCBI search/fetch, Ensembl gene/variants/sequence,
-│                                      ClinVar search, GEO/SRA search, COSMIC mutations,
-│                                      gnomAD frequencies, dbSNP lookup, ENCODE experiments,
-│                                      1000 Genomes frequencies, DDBJ search/fetch
-├── Auth: NCBI_API_KEY (optional), COSMIC_API_KEY (required)
-└── Databases: NCBI, Ensembl, ClinVar, GEO, SRA, COSMIC, gnomAD, dbSNP, ENCODE, 1000G, DDBJ
+**Skills:**
 
-life-sciences-proteomics/              [MCP SERVER - Proteomics]
-├── 8 tools                            UniProt search/fetch/sequence, InterPro lookup,
-│                                      Pfam family, STRING interactions, PRIDE search,
-│                                      neXtProt entry
-├── Auth: None required
-└── Databases: UniProt, InterPro, Pfam, STRING, PRIDE, neXtProt
+| File | Topic |
+|------|-------|
+| bioinformatics-file-formats.md | FASTA, FASTQ, BAM, VCF, GFF, BED, DICOM, SBML |
+| genomics-pipeline-best-practices.md | WDL/Nextflow/CWL design patterns |
+| data-compliance.md | HIPAA, GDPR, GxP, MIAME, MINSEQE |
+| clinical-interoperability.md | FHIR, HL7, OMOP CDM |
+| ecological-data-analysis.md | Species distribution, biodiversity, eDNA |
+| cheminformatics-best-practices.md | SMILES, InChI, Lipinski, SAR |
+| biomedical-imaging.md | Segmentation, feature extraction, DICOM |
+| immunology-vaccine-design.md | Epitope prediction, MHC binding, antibodies |
+| metabolomics-analysis.md | Metabolite ID, spectral matching |
+| single-cell-analysis.md | QC, clustering, trajectory inference |
 
-life-sciences-structural/              [MCP SERVER - Structural Biology]
-├── 6 tools                            PDB search/fetch/download, AlphaFold lookup,
-│                                      CATH classify, SCOP classify
-├── Auth: None required
-└── Databases: PDB, AlphaFold DB, CATH, SCOP
+**Steering workflows:**
 
-life-sciences-pathways/                [MCP SERVER - Pathways & Interactions]
-├── 7 tools                            KEGG pathway/search, Reactome search/pathway,
-│                                      BioCyc pathway, WikiPathways search, IntAct interactions
-├── Auth: None required
-└── Databases: KEGG, Reactome, BioCyc, WikiPathways, IntAct
+| File | Workflow |
+|------|----------|
+| variant-calling-pipeline.md | HealthOmics variant calling setup |
+| gene-disease-associations.md | ClinVar → OMIM → HPO cross-referencing |
+| protein-structure-analysis.md | PDB → AlphaFold → CATH workflows |
+| pipeline-import-healthomics.md | Import nf-core/WDL into HealthOmics |
+| resource-catalog-browsing.md | How to search/browse the catalog |
+| fhir-clinical-integration.md | FHIR + OMOP CDM workflows |
+| species-distribution-analysis.md | GBIF → IUCN → iNaturalist |
+| metabolite-identification.md | HMDB → MetaboLights → MassBank |
+| microbiome-analysis.md | SILVA → QIIME 2 → MG-RAST |
+| compound-screening.md | PubChem → RDKit → ZINC → docking |
+| biomedical-image-analysis.md | OMERO → CellProfiler → ImageJ |
+| molecular-docking.md | PDB → ligand prep → SwissDock |
+| primer-design-cloning.md | Primer3 → PrimerBLAST → REBASE |
+| single-cell-rnaseq.md | CellxGene → expression analysis |
+| epigenomics-analysis.md | IHEC → Roadmap → ENCODE |
+| amr-analysis.md | CARD → BV-BRC resistance profiling |
 
-life-sciences-ontologies/              [MCP SERVER - Ontologies]
-├── 6 tools                            GO search/term/annotations, HPO search/term,
-│                                      Disease Ontology search
-├── Auth: None required
-└── Databases: Gene Ontology, HPO, Disease Ontology
+---
 
-life-sciences-clinical/                [MCP SERVER - Clinical & Pharma]
-├── 10 tools                           OMIM search/entry, DrugBank search/drug,
-│                                      ChEMBL search/bioactivity, PharmGKB search,
-│                                      OpenTargets search, FDA FAERS search,
-│                                      ClinicalTrials.gov search
-├── Auth: OMIM_API_KEY (required), DRUGBANK_API_KEY (required)
-└── Databases: OMIM, DrugBank, ChEMBL, PharmGKB, OpenTargets, FDA FAERS, ClinicalTrials.gov
+### life-sciences-common/ — Shared Base Package
 
-life-sciences-model-organisms/         [MCP SERVER - Model Organisms]
-├── 5 tools                            FlyBase gene, WormBase gene, ZFIN gene,
-│                                      MGI gene, SGD gene
-├── Auth: None required
-└── Databases: FlyBase, WormBase, ZFIN, MGI, SGD
+- `BaseLifeSciencesServer` — Async HTTP client with retry logic
+- Error classes — RateLimitError, AuthenticationError, NotFoundError, etc.
+- Exponential backoff — 429 retry, 5xx retry, timeout retry
 
-life-sciences-molbio/                  [MCP SERVER - Molecular Biology]
-├── 9 tools                            BLAST search/results, MSA align, HMMER search,
-│                                      Primer3 design, PrimerBLAST, restriction analysis,
-│                                      REBASE enzyme, cloning design
-├── Auth: None required
-└── Tools: BLAST, Clustal Omega, MUSCLE, HMMER, Primer3, PrimerBLAST, REBASE
+---
 
-life-sciences-cheminformatics/         [MCP SERVER - Computational Chemistry]
-├── 8 tools                            PubChem search/properties, ChemSpider search,
-│                                      ZINC search, RDKit descriptors/substructure,
-│                                      docking submit, ADMET predict
-├── Auth: CHEMSPIDER_API_KEY (required for ChemSpider)
-└── Databases: PubChem, ChemSpider, ZINC, RDKit, SwissDock, ADMET
+### MCP Servers
 
-life-sciences-immunology/              [MCP SERVER - Immunology]
-├── 4 tools                            IEDB search, ImmPort search, IMGT search,
-│                                      abYsis analyze
-├── Auth: IMMPORT_USERNAME + IMMPORT_PASSWORD (required for ImmPort)
-└── Databases: IEDB, ImmPort, IMGT, abYsis
-
-life-sciences-microbiology/            [MCP SERVER - Microbiology & Metagenomics]
-├── 8 tools                            SILVA search, Greengenes search, QIIME 2 action,
-│                                      MG-RAST search, BV-BRC search/features,
-│                                      CARD search/analyze
-├── Auth: None required
-└── Databases: SILVA, Greengenes, QIIME 2, MG-RAST, BV-BRC, CARD
-
-life-sciences-metabolomics/            [MCP SERVER - Metabolomics]
-├── 4 tools                            HMDB search, MetaboLights search,
-│                                      METLIN search, MassBank search
-├── Auth: None required
-└── Databases: HMDB, MetaboLights, METLIN, MassBank
-
-life-sciences-epigenomics/             [MCP SERVER - Epigenomics]
-├── 3 tools                            IHEC search, Roadmap search, MethBase search
-├── Auth: None required
-└── Databases: IHEC, Roadmap Epigenomics, MethBase
-
-life-sciences-imaging/                 [MCP SERVER - Imaging & Microscopy]
-├── 7 tools                            OMERO search, CellProfiler run, ImageJ macro,
-│                                      DICOM query, BioImage search, IDR search, EMPIAR search
-├── Auth: None required (OMERO may need server credentials)
-└── Tools: OMERO, CellProfiler, ImageJ, DICOM, BioImage Archive, IDR, EMPIAR
-
-life-sciences-agriculture/             [MCP SERVER - Plant Biology]
-├── 4 tools                            Phytozome search, TAIR search,
-│                                      Gramene search, PlantGDB search
-├── Auth: None required
-└── Databases: Phytozome, TAIR, Gramene, PlantGDB
-
-life-sciences-ecology/                 [MCP SERVER - Ecology & Environment]
-├── 7 tools                            GBIF occurrences/taxonomy, BOLD search,
-│                                      iNaturalist search, IUCN species,
-│                                      GenBank env search, MGnify search
-├── Auth: IUCN_API_KEY (required for IUCN Red List)
-└── Databases: GBIF, BOLD, iNaturalist, IUCN Red List, GenBank Env, MGnify
-
-life-sciences-neuroscience/            [MCP SERVER - Neuroscience]
-├── 5 tools                            Allen Brain search/structure, NeuroMorpho search,
-│                                      OpenNeuro search, BrainMap search
-├── Auth: None required
-└── Databases: Allen Brain Atlas, NeuroMorpho, OpenNeuro, BrainMap
-
-life-sciences-cellbiology/             [MCP SERVER - Cell Biology]
-├── 4 tools                            Cell Atlas search, CellxGene datasets/expression,
-│                                      Single Cell Expression Atlas search
-├── Auth: None required
-└── Databases: Cell Atlas, CellxGene, Single Cell Expression Atlas
-
-life-sciences-healthcare/              [MCP SERVER - Healthcare Standards]
-├── 8 tools                            FHIR search/create, HL7 parse/generate,
-│                                      OMOP search, REDCap records/export, DICOMweb query
-├── Auth: REDCAP_API_TOKEN (required for REDCap)
-└── Standards: FHIR, HL7 v2, OMOP CDM, REDCap, DICOMweb
-
-life-sciences-biobanking/              [MCP SERVER - Biobanking & Samples]
-├── 6 tools                            BBMRI search, BioSample search, LIMS sample/create,
-│                                      inventory search, protocols.io search
-├── Auth: None required (LIMS may need credentials)
-└── Databases: BBMRI, BioSample, LIMS, protocols.io
-
-life-sciences-pipelines/               [MCP SERVER - Pipeline Registry]
-├── 8 tools                            nf-core list/pipeline, WDL list/pipeline,
-│                                      CWL list/pipeline, GitHub pipelines,
-│                                      HealthOmics import instructions
-├── Auth: None required
-└── Registries: nf-core, GATK/Broad (WDL), CWL Community, GitHub Community
-
-life-sciences-datastandards/           [MCP SERVER - Data Standards]
-├── 7 tools                            MAGE-TAB validate/parse, ISA-Tab validate/parse,
-│                                      SBML validate/parse, BioPAX parse
-├── Auth: None required
-└── Standards: MAGE-TAB, ISA-Tab, SBML, BioPAX
-
-life-sciences-cloud/                   [MCP SERVER - Cloud & HPC]
-├── 7 tools                            AWS Batch submit/status, Terra workspaces/submit,
-│                                      Galaxy tools/submit/status
-├── Auth: TERRA_TOKEN (required for Terra)
-└── Platforms: AWS Batch, Terra, Galaxy
-
-life-sciences-aiml/                    [MCP SERVER - AI/ML]
-├── 6 tools                            ESM embeddings/structure, AlphaFold predict/status,
-│                                      BioNLP entities/QA
-├── Auth: None required
-└── Models: ESM, AlphaFold, BioNLP (BioGPT/PubMedBERT)
+| Server | Tools | Auth | Databases/Platforms |
+|--------|-------|------|---------------------|
+| **life-sciences-genomics** | 18 | NCBI_API_KEY (optional), COSMIC_API_KEY (required) | NCBI, Ensembl, ClinVar, GEO, SRA, COSMIC, gnomAD, dbSNP, ENCODE, 1000G, DDBJ |
+| **life-sciences-proteomics** | 8 | None | UniProt, InterPro, Pfam, STRING, PRIDE, neXtProt |
+| **life-sciences-structural** | 6 | None | PDB, AlphaFold DB, CATH, SCOP |
+| **life-sciences-pathways** | 7 | None | KEGG, Reactome, BioCyc, WikiPathways, IntAct |
+| **life-sciences-ontologies** | 6 | None | Gene Ontology, HPO, Disease Ontology |
+| **life-sciences-clinical** | 10 | OMIM_API_KEY, DRUGBANK_API_KEY | OMIM, DrugBank, ChEMBL, PharmGKB, OpenTargets, FDA FAERS, ClinicalTrials.gov |
+| **life-sciences-model-organisms** | 5 | None | FlyBase, WormBase, ZFIN, MGI, SGD |
+| **life-sciences-molbio** | 9 | None | BLAST, Clustal Omega, MUSCLE, HMMER, Primer3, PrimerBLAST, REBASE |
+| **life-sciences-cheminformatics** | 8 | CHEMSPIDER_API_KEY (for ChemSpider) | PubChem, ChemSpider, ZINC, RDKit, SwissDock, ADMET |
+| **life-sciences-immunology** | 4 | IMMPORT_USERNAME + IMMPORT_PASSWORD | IEDB, ImmPort, IMGT, abYsis |
+| **life-sciences-microbiology** | 8 | None | SILVA, Greengenes, QIIME 2, MG-RAST, BV-BRC, CARD |
+| **life-sciences-metabolomics** | 4 | None | HMDB, MetaboLights, METLIN, MassBank |
+| **life-sciences-epigenomics** | 3 | None | IHEC, Roadmap Epigenomics, MethBase |
+| **life-sciences-imaging** | 7 | None (OMERO may need credentials) | OMERO, CellProfiler, ImageJ, DICOM, BioImage Archive, IDR, EMPIAR |
+| **life-sciences-agriculture** | 4 | None | Phytozome, TAIR, Gramene, PlantGDB |
+| **life-sciences-ecology** | 7 | IUCN_API_KEY (for IUCN Red List) | GBIF, BOLD, iNaturalist, IUCN Red List, GenBank Env, MGnify |
+| **life-sciences-neuroscience** | 5 | None | Allen Brain Atlas, NeuroMorpho, OpenNeuro, BrainMap |
+| **life-sciences-cellbiology** | 4 | None | Cell Atlas, CellxGene, Single Cell Expression Atlas |
+| **life-sciences-healthcare** | 8 | REDCAP_API_TOKEN (for REDCap) | FHIR, HL7 v2, OMOP CDM, REDCap, DICOMweb |
+| **life-sciences-biobanking** | 6 | None (LIMS may need credentials) | BBMRI, BioSample, LIMS, protocols.io |
+| **life-sciences-pipelines** | 8 | None | nf-core, GATK/Broad (WDL), CWL Community, GitHub Community |
+| **life-sciences-datastandards** | 7 | None | MAGE-TAB, ISA-Tab, SBML, BioPAX |
+| **life-sciences-cloud** | 7 | TERRA_TOKEN (for Terra) | AWS Batch, Terra, Galaxy |
+| **life-sciences-aiml** | 6 | None | ESM, AlphaFold, BioNLP (BioGPT/PubMedBERT) |
 
 
-================================================================================
-PART 3: EXAMPLE TEST CASES BY SUBDIRECTORY
-================================================================================
+## PART 3: EXAMPLE TEST CASES
 
 For each MCP server, here are example prompts to test in Kiro chat after
 activating the Power and configuring the server in mcp.json.
 
---------------------------------------------------------------------------------
-life-sciences-genomics
---------------------------------------------------------------------------------
-Test 1: "Search NCBI gene database for BRCA1"
-Expected: Returns gene IDs and basic info for BRCA1
+### life-sciences-genomics
 
-Test 2: "Fetch the nucleotide sequence for accession NM_007294.4 in FASTA format"
-Expected: Returns FASTA-formatted sequence data
+- "Search NCBI gene database for BRCA1" → Returns gene IDs and basic info
+- "Fetch the nucleotide sequence for accession NM_007294.4 in FASTA format" → Returns FASTA sequence
+- "Search PubMed for recent papers on CRISPR gene editing" → Returns article titles, authors, abstracts
+- "Look up variants in the region 7:140424943-140624564 in Ensembl" → Returns variant IDs with consequences
+- "Search ClinVar for the variant rs113488022" → Returns clinical significance and conditions
 
-Test 3: "Search PubMed for recent papers on CRISPR gene editing"
-Expected: Returns article titles, authors, and abstracts
+### life-sciences-proteomics
 
-Test 4: "Look up variants in the region 7:140424943-140624564 in Ensembl"
-Expected: Returns variant IDs with consequence types
+- "Search UniProt for the protein TP53" → Returns P04637 with protein name, organism, length
+- "Get the full protein record for UniProt accession P04637" → Returns function, cross-refs, sequence
+- "Find protein-protein interactions for TP53 in STRING" → Returns partners with confidence scores
+- "Look up InterPro domain IPR011364" → Returns domain name, type, cross-references
 
-Test 5: "Search ClinVar for the variant rs113488022"
-Expected: Returns clinical significance and associated conditions
+### life-sciences-structural
 
---------------------------------------------------------------------------------
-life-sciences-proteomics
---------------------------------------------------------------------------------
-Test 1: "Search UniProt for the protein TP53"
-Expected: Returns P04637 with protein name, organism, sequence length
+- "Search PDB for hemoglobin structures" → Returns PDB IDs like 4HHB with resolution
+- "Get the AlphaFold predicted structure for UniProt P04637" → Returns structure with pLDDT scores
+- "Classify CATH domain 1cukA01" → Returns class, architecture, topology, superfamily
+- "Download the PDB file for structure 4HHB" → Returns PDB-format coordinates
 
-Test 2: "Get the full protein record for UniProt accession P04637"
-Expected: Returns function annotation, cross-references, sequence
+### life-sciences-pathways
 
-Test 3: "Find protein-protein interactions for TP53 in STRING"
-Expected: Returns interaction partners with confidence scores
+- "Search KEGG for the apoptosis pathway" → Returns pathway ID (hsa04210) with genes
+- "Get Reactome pathway R-HSA-1640170" → Returns pathway name, species, molecules
+- "Find WikiPathways related to cell cycle in Homo sapiens" → Returns pathway IDs with names
 
-Test 4: "Look up InterPro domain IPR011364"
-Expected: Returns domain name, type, and member database cross-references
+### life-sciences-ontologies
 
---------------------------------------------------------------------------------
-life-sciences-structural
---------------------------------------------------------------------------------
-Test 1: "Search PDB for hemoglobin structures"
-Expected: Returns PDB IDs like 4HHB with resolution and method
+- "Search Gene Ontology for 'kinase activity'" → Returns GO terms with IDs and namespaces
+- "Get details for GO term GO:0008150" → Returns term name (biological_process), definition
+- "Search HPO for 'seizure'" → Returns HPO terms with associated diseases
 
-Test 2: "Get the AlphaFold predicted structure for UniProt P04637"
-Expected: Returns structure with pLDDT confidence scores
+### life-sciences-clinical
 
-Test 3: "Classify CATH domain 1cukA01"
-Expected: Returns class, architecture, topology, homologous superfamily
+- "Search OMIM for Marfan syndrome" (requires OMIM_API_KEY) → Returns MIM 154700
+- "Search ChEMBL for aspirin" → Returns CHEMBL25 with formula and weight
+- "Search ClinicalTrials.gov for breast cancer trials" → Returns NCT numbers, phases
+- "Search FDA FAERS for adverse events related to aspirin" → Returns event reports
 
-Test 4: "Download the PDB file for structure 4HHB"
-Expected: Returns PDB-format coordinate data
+### life-sciences-model-organisms
 
---------------------------------------------------------------------------------
-life-sciences-pathways
---------------------------------------------------------------------------------
-Test 1: "Search KEGG for the apoptosis pathway"
-Expected: Returns pathway ID (hsa04210) with associated genes
+- "Look up the gene dpp in FlyBase" → Returns FlyBase ID, location, phenotypes
+- "Search for gene unc-86 in WormBase" → Returns WormBase ID, GO annotations
+- "Look up Trp53 in MGI (mouse)" → Returns MGI ID, chromosomal location
 
-Test 2: "Get Reactome pathway R-HSA-1640170"
-Expected: Returns pathway name, species, participating molecules
+### life-sciences-molbio
 
-Test 3: "Find WikiPathways related to cell cycle in Homo sapiens"
-Expected: Returns pathway IDs with names and revision dates
+- "Submit a BLAST search for sequence ATGGATTTTATCTGCTCTTCG" → Returns RID
+- "Design PCR primers for sequence with product size 150-250bp" → Returns primer pairs with Tm, GC%
+- "Find restriction enzyme cut sites in GAATTCATGCGATCGAATTC" → Returns EcoRI sites
+- "Look up restriction enzyme EcoRI in REBASE" → Returns recognition sequence, cut positions
 
---------------------------------------------------------------------------------
-life-sciences-ontologies
---------------------------------------------------------------------------------
-Test 1: "Search Gene Ontology for 'kinase activity'"
-Expected: Returns GO terms with IDs, names, and namespaces
+### life-sciences-cheminformatics
 
-Test 2: "Get details for GO term GO:0008150"
-Expected: Returns term name (biological_process), definition
+- "Search PubChem for caffeine" → Returns CID, formula C8H10N4O2, MW
+- "Compute molecular descriptors for SMILES CN1C=NC2=C1C(=O)N(C(=O)N2C)C" → Returns MW, LogP, HBD, HBA
+- "Predict ADMET properties for aspirin" → Returns solubility, BBB, CYP450 predictions
 
-Test 3: "Search HPO for 'seizure'"
-Expected: Returns HPO terms with IDs and associated diseases
+### life-sciences-immunology
 
---------------------------------------------------------------------------------
-life-sciences-clinical
---------------------------------------------------------------------------------
-Test 1: "Search OMIM for Marfan syndrome" (requires OMIM_API_KEY)
-Expected: Returns MIM number 154700 with title
+- "Search IEDB for epitopes from SARS-CoV-2 spike protein" → Returns epitopes with MHC alleles
+- "Analyze this antibody sequence with abYsis" → Returns CDR annotations, framework regions
 
-Test 2: "Search ChEMBL for aspirin"
-Expected: Returns CHEMBL25 with molecular formula and weight
+### life-sciences-microbiology
 
-Test 3: "Search ClinicalTrials.gov for breast cancer trials"
-Expected: Returns NCT numbers, titles, phases, and enrollment
+- "Search CARD for resistance genes related to tetracycline" → Returns ARO accessions, mechanisms
+- "Search BV-BRC for Staphylococcus aureus genomes" → Returns genome IDs, contig counts
+- "Search SILVA for Lactobacillus rRNA sequences" → Returns accessions with taxonomy
 
-Test 4: "Search FDA FAERS for adverse events related to aspirin"
-Expected: Returns adverse event reports with reactions and outcomes
+### life-sciences-metabolomics
 
---------------------------------------------------------------------------------
-life-sciences-model-organisms
---------------------------------------------------------------------------------
-Test 1: "Look up the gene dpp in FlyBase"
-Expected: Returns FlyBase ID, cytological location, phenotypes
+- "Search HMDB for glucose" → Returns HMDB ID, formula, biological role, pathways
+- "Search METLIN for metabolites with exact mass 180.063" → Returns matching metabolites
+- "Search MassBank for caffeine spectra" → Returns spectral records with peaks
 
-Test 2: "Search for gene unc-86 in WormBase"
-Expected: Returns WormBase ID, genomic location, GO annotations
+### life-sciences-epigenomics
 
-Test 3: "Look up Trp53 in MGI (mouse)"
-Expected: Returns MGI ID, chromosomal location, phenotype annotations
+- "Search IHEC for liver epigenome datasets" → Returns dataset IDs with tissue and marks
+- "Search Roadmap Epigenomics for H3K4me3 in brain tissue" → Returns experiment IDs
 
---------------------------------------------------------------------------------
-life-sciences-molbio
---------------------------------------------------------------------------------
-Test 1: "Submit a BLAST search for sequence ATGGATTTTATCTGCTCTTCG"
-Expected: Returns a request ID (RID) for the BLAST job
-
-Test 2: "Design PCR primers for the sequence ATGCGATCGATCGATCG... with product size 150-250bp"
-Expected: Returns primer pairs with Tm, GC%, and product size
-
-Test 3: "Find restriction enzyme cut sites in GAATTCATGCGATCGAATTC"
-Expected: Returns EcoRI sites at positions with fragment sizes
-
-Test 4: "Look up restriction enzyme EcoRI in REBASE"
-Expected: Returns recognition sequence GAATTC, cut positions, source organism
-
---------------------------------------------------------------------------------
-life-sciences-cheminformatics
---------------------------------------------------------------------------------
-Test 1: "Search PubChem for caffeine"
-Expected: Returns CID, molecular formula C8H10N4O2, molecular weight
-
-Test 2: "Compute molecular descriptors for SMILES string CN1C=NC2=C1C(=O)N(C(=O)N2C)C"
-Expected: Returns MW, LogP, H-bond donors/acceptors, Lipinski compliance
-
-Test 3: "Predict ADMET properties for aspirin (SMILES: CC(=O)OC1=CC=CC=C1C(=O)O)"
-Expected: Returns solubility, BBB permeability, CYP450 inhibition predictions
-
---------------------------------------------------------------------------------
-life-sciences-immunology
---------------------------------------------------------------------------------
-Test 1: "Search IEDB for epitopes from SARS-CoV-2 spike protein"
-Expected: Returns epitope sequences with MHC alleles and assay types
-
-Test 2: "Analyze this antibody sequence with abYsis: EVQLVESGGGLVQPGG..."
-Expected: Returns CDR annotations, framework regions, numbering
-
---------------------------------------------------------------------------------
-life-sciences-microbiology
---------------------------------------------------------------------------------
-Test 1: "Search CARD for resistance genes related to tetracycline"
-Expected: Returns ARO accessions, gene names, resistance mechanisms
-
-Test 2: "Search BV-BRC for Staphylococcus aureus genomes"
-Expected: Returns genome IDs, status, contig counts
-
-Test 3: "Search SILVA for Lactobacillus rRNA sequences"
-Expected: Returns accessions with taxonomic classification
-
---------------------------------------------------------------------------------
-life-sciences-metabolomics
---------------------------------------------------------------------------------
-Test 1: "Search HMDB for glucose"
-Expected: Returns HMDB ID, chemical formula, biological role, pathways
-
-Test 2: "Search METLIN for metabolites with exact mass 180.063"
-Expected: Returns matching metabolites within tolerance
-
-Test 3: "Search MassBank for caffeine spectra"
-Expected: Returns spectral records with instrument type and peaks
-
---------------------------------------------------------------------------------
-life-sciences-epigenomics
---------------------------------------------------------------------------------
-Test 1: "Search IHEC for liver epigenome datasets"
-Expected: Returns dataset IDs with tissue, assay, and epigenomic marks
-
-Test 2: "Search Roadmap Epigenomics for H3K4me3 in brain tissue"
-Expected: Returns experiment IDs with chromatin state annotations
-
---------------------------------------------------------------------------------
-life-sciences-imaging
---------------------------------------------------------------------------------
-Test 1: "Search BioImage Archive for fluorescence microscopy datasets"
-Expected: Returns accessions with imaging modality and organism
-
-Test 2: "Search EMPIAR for cryo-EM datasets"
-Expected: Returns EMPIAR IDs with resolution and data size
-
-Test 3: "Query DICOM studies for modality CT"
-Expected: Returns study metadata with body part and image count
-
---------------------------------------------------------------------------------
-life-sciences-agriculture
---------------------------------------------------------------------------------
-Test 1: "Search TAIR for the gene FLC in Arabidopsis"
-Expected: Returns locus ID, chromosomal location, GO annotations
-
-Test 2: "Search Gramene for rice genes related to drought tolerance"
-Expected: Returns gene IDs with species and pathway associations
-
---------------------------------------------------------------------------------
-life-sciences-ecology
---------------------------------------------------------------------------------
-Test 1: "Search GBIF for occurrences of Panthera tigris"
-Expected: Returns occurrence records with coordinates and dates
-
-Test 2: "Get IUCN Red List status for Panthera tigris" (requires IUCN_API_KEY)
-Expected: Returns Endangered status, population trend, threats
-
-Test 3: "Search iNaturalist for observations of monarch butterflies"
-Expected: Returns observation records with locations and quality grades
+### life-sciences-imaging
 
---------------------------------------------------------------------------------
-life-sciences-neuroscience
---------------------------------------------------------------------------------
-Test 1: "Search Allen Brain Atlas for BDNF gene expression"
-Expected: Returns expression data with brain regions and energy values
+- "Search BioImage Archive for fluorescence microscopy datasets" → Returns accessions
+- "Search EMPIAR for cryo-EM datasets" → Returns EMPIAR IDs with resolution
+- "Query DICOM studies for modality CT" → Returns study metadata
 
-Test 2: "Search NeuroMorpho for pyramidal neurons in hippocampus"
-Expected: Returns neuron morphologies with cell type and species
+### life-sciences-agriculture
 
-Test 3: "Search OpenNeuro for fMRI datasets"
-Expected: Returns dataset accessions with participant counts
+- "Search TAIR for the gene FLC in Arabidopsis" → Returns locus ID, GO annotations
+- "Search Gramene for rice genes related to drought tolerance" → Returns gene IDs
 
---------------------------------------------------------------------------------
-life-sciences-cellbiology
---------------------------------------------------------------------------------
-Test 1: "Search CellxGene for single-cell datasets from lung tissue"
-Expected: Returns dataset IDs with cell counts and assay types
+### life-sciences-ecology
 
-Test 2: "Get gene expression for TP53 in CellxGene dataset X"
-Expected: Returns expression values grouped by cell type
+- "Search GBIF for occurrences of Panthera tigris" → Returns records with coordinates
+- "Get IUCN Red List status for Panthera tigris" (requires IUCN_API_KEY) → Returns Endangered status
+- "Search iNaturalist for observations of monarch butterflies" → Returns observations
 
-Test 3: "Search Cell Atlas for TP53 subcellular localization"
-Expected: Returns organelle assignments with reliability scores
+### life-sciences-neuroscience
 
---------------------------------------------------------------------------------
-life-sciences-healthcare
---------------------------------------------------------------------------------
-Test 1: "Search FHIR for Patient resources with name Smith"
-Expected: Returns FHIR Patient resources in JSON format
+- "Search Allen Brain Atlas for BDNF gene expression" → Returns expression with brain regions
+- "Search NeuroMorpho for pyramidal neurons in hippocampus" → Returns morphologies
+- "Search OpenNeuro for fMRI datasets" → Returns dataset accessions
 
-Test 2: "Parse this HL7 message: MSH|^~\&|SendApp|SendFac|..."
-Expected: Returns parsed segments and fields in structured format
+### life-sciences-cellbiology
 
-Test 3: "Search OMOP for concept 'diabetes mellitus'"
-Expected: Returns concept IDs with domain and vocabulary
+- "Search CellxGene for single-cell datasets from lung tissue" → Returns datasets with cell counts
+- "Get gene expression for TP53 in CellxGene dataset" → Returns expression by cell type
+- "Search Cell Atlas for TP53 subcellular localization" → Returns organelle assignments
 
---------------------------------------------------------------------------------
-life-sciences-biobanking
---------------------------------------------------------------------------------
-Test 1: "Search BBMRI for biobanks with breast cancer samples in Germany"
-Expected: Returns biobank names, collection names, sample counts
+### life-sciences-healthcare
 
-Test 2: "Search protocols.io for CRISPR protocols"
-Expected: Returns protocol DOIs, titles, authors, step counts
+- "Search FHIR for Patient resources with name Smith" → Returns FHIR Patient JSON
+- "Parse this HL7 message: MSH|^~\\&|..." → Returns parsed segments and fields
+- "Search OMOP for concept 'diabetes mellitus'" → Returns concept IDs with domain
 
---------------------------------------------------------------------------------
-life-sciences-pipelines
---------------------------------------------------------------------------------
-Test 1: "List available nf-core pipelines"
-Expected: Returns pipeline names (rnaseq, sarek, viralrecon, etc.) with versions
+### life-sciences-biobanking
 
-Test 2: "Get details for the nf-core/sarek pipeline"
-Expected: Returns description, required inputs, parameters, repository URL
+- "Search BBMRI for biobanks with breast cancer samples in Germany" → Returns biobank names
+- "Search protocols.io for CRISPR protocols" → Returns protocol DOIs, titles
 
-Test 3: "Search GitHub for popular RNA-seq pipelines"
-Expected: Returns repositories with star counts and descriptions
+### life-sciences-pipelines
 
-Test 4: "How do I import nf-core/rnaseq into AWS HealthOmics?"
-Expected: Returns step-by-step import instructions
+- "List available nf-core pipelines" → Returns pipeline names with versions
+- "Get details for the nf-core/sarek pipeline" → Returns description, inputs, parameters
+- "Search GitHub for popular RNA-seq pipelines" → Returns repos with star counts
+- "How do I import nf-core/rnaseq into AWS HealthOmics?" → Returns step-by-step instructions
 
---------------------------------------------------------------------------------
-life-sciences-datastandards
---------------------------------------------------------------------------------
-Test 1: "Validate this SBML model: <sbml>...</sbml>"
-Expected: Returns validation results with any errors/warnings
+### life-sciences-datastandards
 
-Test 2: "Parse this ISA-Tab investigation file"
-Expected: Returns structured investigation/study/assay metadata
+- "Validate this SBML model" → Returns validation results with errors/warnings
+- "Parse this ISA-Tab investigation file" → Returns structured metadata
 
---------------------------------------------------------------------------------
-life-sciences-cloud
---------------------------------------------------------------------------------
-Test 1: "List my Terra workspaces" (requires TERRA_TOKEN)
-Expected: Returns workspace names, namespaces, creation dates
+### life-sciences-cloud
 
-Test 2: "Submit an AWS Batch job with definition 'my-job-def' to queue 'my-queue'"
-Expected: Returns job ID and submission status
+- "List my Terra workspaces" (requires TERRA_TOKEN) → Returns workspace names
+- "Submit an AWS Batch job with definition 'my-job-def' to queue 'my-queue'" → Returns job ID
+- "List available tools on Galaxy (usegalaxy.org)" → Returns tool IDs and versions
 
-Test 3: "List available tools on Galaxy (usegalaxy.org)"
-Expected: Returns tool IDs, names, versions, descriptions
+### life-sciences-aiml
 
---------------------------------------------------------------------------------
-life-sciences-aiml
---------------------------------------------------------------------------------
-Test 1: "Get ESM protein embeddings for sequence MEEPQSDPSVEPPLSQETFS"
-Expected: Returns per-residue embeddings and secondary structure predictions
+- "Get ESM protein embeddings for sequence MEEPQSDPSVEPPLSQETFS" → Returns embeddings, secondary structure
+- "Submit an AlphaFold structure prediction" → Returns job ID and ETA
+- "Extract biomedical entities from: 'BRCA1 mutations increase breast cancer risk'" → Returns gene/disease entities
 
-Test 2: "Submit an AlphaFold structure prediction for sequence MEEPQSDP..."
-Expected: Returns job ID and estimated completion time
 
-Test 3: "Extract biomedical entities from: 'BRCA1 mutations increase breast cancer risk'"
-Expected: Returns entities: BRCA1 (gene), breast cancer (disease)
-
-
-================================================================================
-END OF GUIDE
-================================================================================
-
-
-================================================================================
-PART 4: ADVANCED TEST CASES (Multi-Step Workflows)
-================================================================================
+## PART 4: ADVANCED TEST CASES (Multi-Step Workflows)
 
 These test cases go beyond simple database queries. They test pipeline
 execution, molecular design, compute job submission, data validation,
 cross-database workflows, and AI/ML inference.
 
---------------------------------------------------------------------------------
-PIPELINE EXECUTION (life-sciences-pipelines + aws-healthomics)
---------------------------------------------------------------------------------
+### Pipeline Execution (life-sciences-pipelines + aws-healthomics)
 
-Test 1: "List nf-core pipelines, then show me how to import nf-core/sarek
-         into AWS HealthOmics for somatic variant calling"
-Expected: Lists pipelines → provides step-by-step import instructions
-          including packaging, CreateWorkflow API call, and parameter config
+**Test 1:** "List nf-core pipelines, then show me how to import nf-core/sarek into AWS HealthOmics for somatic variant calling"
+→ Lists pipelines → provides step-by-step import instructions including packaging, CreateWorkflow API call, and parameter config
 
-Test 2: "Find a WDL pipeline for germline short variant discovery from the
-         Broad Institute, and create an AWS HealthOmics workflow from it"
-Expected: Finds GATK best practices pipeline → provides WDL packaging
-          instructions → shows CreateAHOWorkflow parameters
+**Test 2:** "Find a WDL pipeline for germline short variant discovery from the Broad Institute, and create an AWS HealthOmics workflow from it"
+→ Finds GATK best practices pipeline → provides WDL packaging instructions → shows CreateAHOWorkflow parameters
 
-Test 3: "Search GitHub for RNA-seq pipelines with 500+ stars, then help me
-         run the top result on AWS HealthOmics"
-Expected: Returns popular repos → provides import workflow for the selected
-          pipeline including input parameter mapping
+**Test 3:** "Search GitHub for RNA-seq pipelines with 500+ stars, then help me run the top result on AWS HealthOmics"
+→ Returns popular repos → provides import workflow for the selected pipeline
 
---------------------------------------------------------------------------------
-MOLECULAR BIOLOGY DESIGN (life-sciences-molbio)
---------------------------------------------------------------------------------
+### Molecular Biology Design (life-sciences-molbio)
 
-Test 4: "Design PCR primers for amplifying the BRCA1 exon 11 region with a
-         product size of 200-400bp, then check their specificity against the
-         human genome"
-Expected: Primer3 returns primer pairs → PrimerBLAST checks specificity →
-          reports off-target sites and mismatch counts
+**Test 4:** "Design PCR primers for amplifying the BRCA1 exon 11 region with a product size of 200-400bp, then check their specificity against the human genome"
+→ Primer3 returns primer pairs → PrimerBLAST checks specificity → reports off-target sites
 
-Test 5: "I want to clone my insert (ATGCGATCG...) into pUC19 using EcoRI and
-         BamHI. Analyze the restriction sites in both sequences and design
-         the cloning strategy"
-Expected: Restriction analysis of both sequences → identifies compatible
-          sites → designs the construct with junction sequences and total size
+**Test 5:** "Clone my insert into pUC19 using EcoRI and BamHI. Analyze the restriction sites and design the cloning strategy"
+→ Restriction analysis → identifies compatible sites → designs construct with junction sequences
 
-Test 6: "Submit a BLAST search for this protein sequence against the nr
-         database, then when results are ready, show me the top 5 hits with
-         their domain architecture from InterPro"
-Expected: BLAST submit → poll for results → fetch top hits → InterPro
-          lookup for each hit showing domain annotations
+**Test 6:** "Submit a BLAST search for this protein sequence, then show me the top 5 hits with their domain architecture from InterPro"
+→ BLAST submit → poll for results → InterPro lookup for each hit
 
---------------------------------------------------------------------------------
-COMPUTATIONAL CHEMISTRY (life-sciences-cheminformatics)
---------------------------------------------------------------------------------
+### Computational Chemistry (life-sciences-cheminformatics)
 
-Test 7: "Search PubChem for ibuprofen, compute its molecular descriptors,
-         check Lipinski rule-of-five compliance, and predict its ADMET
-         properties"
-Expected: PubChem returns CID → RDKit computes MW, LogP, HBD, HBA →
-          reports Lipinski compliance → ADMET predicts solubility, BBB, CYP450
+**Test 7:** "Search PubChem for ibuprofen, compute its molecular descriptors, check Lipinski compliance, and predict ADMET properties"
+→ PubChem CID → RDKit descriptors → Lipinski check → ADMET predictions
 
-Test 8: "I have a receptor (PDB: 1HWI) and a ligand (SMILES: CC(=O)Oc1ccccc1C(=O)O).
-         Submit a molecular docking job and analyze the binding poses"
-Expected: Docking submit with receptor PDB ID and ligand SMILES →
-          returns binding affinity scores and interacting residues
+**Test 8:** "I have a receptor (PDB: 1HWI) and a ligand (SMILES: CC(=O)Oc1ccccc1C(=O)O). Submit a molecular docking job"
+→ Docking submit → returns binding affinity scores and interacting residues
 
-Test 9: "Search ZINC for drug-like compounds similar to aspirin (LogP < 2,
-         MW < 300), then compute RDKit descriptors for the top 5"
-Expected: ZINC filtered search → returns compounds → RDKit descriptors
-          for each with Lipinski assessment
+**Test 9:** "Search ZINC for drug-like compounds similar to aspirin (LogP < 2, MW < 300), then compute RDKit descriptors for the top 5"
+→ ZINC filtered search → RDKit descriptors for each compound
 
---------------------------------------------------------------------------------
-CROSS-DATABASE WORKFLOWS (cross-database search + multiple servers)
---------------------------------------------------------------------------------
+### Cross-Database Workflows
 
-Test 10: "Do a cross-database search for gene BRCA1 — I want results from
-          NCBI, UniProt, Ensembl, ClinVar, OMIM, and Gene Ontology"
-Expected: Parallel queries to all 6 databases → consolidated results
-          grouped by database → reports any unavailable databases
+**Test 10:** "Cross-database search for gene BRCA1 — results from NCBI, UniProt, Ensembl, ClinVar, OMIM, and Gene Ontology"
+→ Parallel queries to 6 databases → consolidated results grouped by database
 
-Test 11: "Search for the drug metformin across DrugBank, ChEMBL, PharmGKB,
-          and OpenTargets. Show me targets, bioactivity, and clinical
-          annotations"
-Expected: Cross-database drug search → DrugBank targets → ChEMBL
-          bioactivity data → PharmGKB clinical annotations → OpenTargets
-          disease associations
+**Test 11:** "Search for metformin across DrugBank, ChEMBL, PharmGKB, and OpenTargets"
+→ DrugBank targets → ChEMBL bioactivity → PharmGKB annotations → OpenTargets associations
 
-Test 12: "I'm studying the protein TP53. Search UniProt for its sequence,
-          PDB for experimental structures, AlphaFold for predicted structure,
-          STRING for interaction partners, and InterPro for domain architecture"
-Expected: Cross-database protein search → comprehensive TP53 profile
-          from 5 databases
+**Test 12:** "Study protein TP53: UniProt sequence, PDB structures, AlphaFold prediction, STRING interactions, InterPro domains"
+→ Comprehensive TP53 profile from 5 databases
 
---------------------------------------------------------------------------------
-CLOUD COMPUTE (life-sciences-cloud)
---------------------------------------------------------------------------------
+### Cloud Compute (life-sciences-cloud)
 
-Test 13: "Submit an AWS Batch job using job definition 'variant-calling-job'
-          on queue 'genomics-queue' with parameters {sample: 'NA12878'}, then
-          check its status"
-Expected: Batch submit returns job ID → status query returns RUNNING/SUCCEEDED
+**Test 13:** "Submit an AWS Batch job using job definition 'variant-calling-job' on queue 'genomics-queue', then check its status"
+→ Batch submit returns job ID → status query returns RUNNING/SUCCEEDED
 
-Test 14: "List my Terra workspaces, then submit a workflow to workspace
-          'my-genomics-workspace' using method 'gatk-germline'"
-Expected: Lists workspaces → submits workflow → returns submission ID
+**Test 14:** "List my Terra workspaces, then submit a workflow to 'my-genomics-workspace'"
+→ Lists workspaces → submits workflow → returns submission ID
 
-Test 15: "Find the BWA-MEM tool on Galaxy (usegalaxy.org), then submit a job
-          with my FASTQ files as input"
-Expected: Galaxy tool search → finds BWA-MEM → submits job → returns job ID
+**Test 15:** "Find the BWA-MEM tool on Galaxy, then submit a job with my FASTQ files"
+→ Galaxy tool search → submits job → returns job ID
 
---------------------------------------------------------------------------------
-DATA VALIDATION (life-sciences-datastandards)
---------------------------------------------------------------------------------
+### Data Validation (life-sciences-datastandards)
 
-Test 16: "Validate this SBML model file for correctness against SBML Level 3
-          Version 2, then parse it and show me the compartments, species, and
-          reactions"
-Expected: SBML validation returns errors/warnings → parse returns structured
-          model components
+**Test 16:** "Validate this SBML model against Level 3 Version 2, then parse it and show compartments, species, and reactions"
+→ SBML validation → parse returns structured model components
 
-Test 17: "Validate my ISA-Tab investigation file and check if it meets MINSEQE
-          compliance requirements"
-Expected: ISA-Tab validation → compliance checklist assessment
+**Test 17:** "Validate my ISA-Tab investigation file and check MINSEQE compliance"
+→ ISA-Tab validation → compliance checklist assessment
 
-Test 18: "Parse this BioPAX pathway file and show me the pathways,
-          interactions, and physical entities"
-Expected: BioPAX parse returns structured pathway components
+**Test 18:** "Parse this BioPAX pathway file and show pathways, interactions, and physical entities"
+→ BioPAX parse returns structured pathway components
 
---------------------------------------------------------------------------------
-CLINICAL DATA INTEGRATION (life-sciences-healthcare)
---------------------------------------------------------------------------------
+### Clinical Data Integration (life-sciences-healthcare)
 
-Test 19: "Connect to my FHIR server, search for all Patient resources with
-          condition 'diabetes', then create a new Observation resource for
-          patient P001 with HbA1c value 7.2%"
-Expected: FHIR search returns patients → FHIR create submits new
-          Observation → returns resource ID and version
+**Test 19:** "Search FHIR for patients with condition 'diabetes', then create a new Observation for patient P001 with HbA1c 7.2%"
+→ FHIR search → FHIR create → returns resource ID
 
-Test 20: "Parse this HL7 v2 ADT^A01 message, extract the patient demographics,
-          then generate a new HL7 message with updated address"
-Expected: HL7 parse → structured segments → HL7 generate with modifications
+**Test 20:** "Parse this HL7 v2 ADT^A01 message, extract demographics, then generate a new message with updated address"
+→ HL7 parse → structured segments → HL7 generate with modifications
 
-Test 21: "Export all records from my REDCap project (ID: 12345) in JSON format,
-          then map the key fields to OMOP CDM concepts"
-Expected: REDCap export → data in JSON → OMOP concept mapping suggestions
+**Test 21:** "Export all records from REDCap project 12345 in JSON, then map fields to OMOP CDM concepts"
+→ REDCap export → OMOP concept mapping suggestions
 
---------------------------------------------------------------------------------
-AI/ML INFERENCE (life-sciences-aiml)
---------------------------------------------------------------------------------
+### AI/ML Inference (life-sciences-aiml)
 
-Test 22: "Get ESM protein embeddings for the sequence MEEPQSDPSVEPPLSQETFS,
-          predict its secondary structure, and generate a contact map"
-Expected: ESM returns per-residue embeddings, secondary structure predictions
-          (helix/sheet/coil), and predicted contact map
+**Test 22:** "Get ESM embeddings for sequence MEEPQSDPSVEPPLSQETFS, predict secondary structure, and generate a contact map"
+→ Per-residue embeddings, secondary structure predictions, contact map
 
-Test 23: "Submit this protein sequence for AlphaFold structure prediction,
-          then check the job status"
-Expected: AlphaFold submit returns job ID → status check returns progress
-          and estimated completion time
+**Test 23:** "Submit this protein sequence for AlphaFold prediction, then check job status"
+→ AlphaFold submit → status check with progress and ETA
 
-Test 24: "Extract all biomedical entities from this abstract: 'Mutations in
-          BRCA1 and BRCA2 significantly increase the risk of breast and
-          ovarian cancer. Olaparib, a PARP inhibitor, shows efficacy in
-          BRCA-mutated tumors.' Then answer: What drugs target BRCA-mutated
-          cancers?"
-Expected: Entity extraction → BRCA1 (gene), BRCA2 (gene), breast cancer
-          (disease), ovarian cancer (disease), Olaparib (drug), PARP (protein)
-          → QA returns "Olaparib" with confidence score
+**Test 24:** "Extract biomedical entities from this abstract about BRCA1/BRCA2 and Olaparib, then answer: What drugs target BRCA-mutated cancers?"
+→ Entity extraction (genes, diseases, drugs) → QA returns "Olaparib" with confidence
 
---------------------------------------------------------------------------------
-MICROBIOME ANALYSIS (life-sciences-microbiology)
---------------------------------------------------------------------------------
+### Microbiome Analysis (life-sciences-microbiology)
 
-Test 25: "Run a QIIME 2 diversity analysis on my 16S amplicon data, then
-          search SILVA for the taxonomy of the top OTUs, and check CARD for
-          any antibiotic resistance genes in the community"
-Expected: QIIME 2 action → diversity results → SILVA taxonomy lookup →
-          CARD resistance gene search
+**Test 25:** "Run QIIME 2 diversity analysis on 16S data, search SILVA for top OTU taxonomy, check CARD for resistance genes"
+→ QIIME 2 diversity → SILVA taxonomy → CARD resistance search
 
-Test 26: "Search BV-BRC for Mycobacterium tuberculosis genomes, get the
-          genomic features for the top result, then check CARD for resistance
-          determinants"
-Expected: BV-BRC genome search → features for genome → CARD analysis
+**Test 26:** "Search BV-BRC for M. tuberculosis genomes, get features, then check CARD for resistance determinants"
+→ BV-BRC search → features → CARD analysis
 
---------------------------------------------------------------------------------
-ECOLOGY WORKFLOWS (life-sciences-ecology)
---------------------------------------------------------------------------------
+### Ecology Workflows (life-sciences-ecology)
 
-Test 27: "Search GBIF for all occurrences of Panthera tigris in India,
-          get the IUCN conservation status, and find recent iNaturalist
-          observations with photos"
-Expected: GBIF occurrences with coordinates → IUCN Endangered status →
-          iNaturalist observations with quality grades
+**Test 27:** "Search GBIF for Panthera tigris in India, get IUCN status, find recent iNaturalist observations"
+→ GBIF occurrences → IUCN Endangered → iNaturalist observations
 
-Test 28: "Search MGnify for soil metagenome studies, then get the taxonomic
-          summary for the top result"
-Expected: MGnify study search → taxonomic composition data
+**Test 28:** "Search MGnify for soil metagenome studies, get taxonomic summary for top result"
+→ MGnify search → taxonomic composition data
 
---------------------------------------------------------------------------------
-IMMUNOLOGY & VACCINE DESIGN (life-sciences-immunology)
---------------------------------------------------------------------------------
+### Immunology & Vaccine Design (life-sciences-immunology)
 
-Test 29: "Search IEDB for T-cell epitopes from SARS-CoV-2 spike protein
-          restricted to HLA-A*02:01, then analyze the top epitope sequence
-          with abYsis for structural features"
-Expected: IEDB epitope search with MHC restriction → abYsis sequence
-          analysis with CDR annotations
+**Test 29:** "Search IEDB for T-cell epitopes from SARS-CoV-2 spike restricted to HLA-A*02:01, then analyze with abYsis"
+→ IEDB epitope search → abYsis sequence analysis with CDR annotations
 
---------------------------------------------------------------------------------
-SINGLE-CELL ANALYSIS (life-sciences-cellbiology)
---------------------------------------------------------------------------------
+### Single-Cell Analysis (life-sciences-cellbiology)
 
-Test 30: "Search CellxGene for single-cell datasets from human lung tissue,
-          then get the expression of ACE2 across cell types in the top dataset"
-Expected: CellxGene dataset search → expression query → ACE2 expression
-          grouped by cell type with percentages
+**Test 30:** "Search CellxGene for human lung datasets, then get ACE2 expression across cell types"
+→ CellxGene search → ACE2 expression grouped by cell type
