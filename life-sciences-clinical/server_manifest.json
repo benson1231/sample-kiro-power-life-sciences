@@ -1,0 +1,60 @@
+{
+  "name": "life-sciences-clinical",
+  "version": "0.1.0",
+  "domain": "Clinical and Pharma",
+  "databases": [
+    {
+      "name": "OMIM",
+      "tools": ["omim_search", "omim_entry"],
+      "authRequired": true,
+      "credentialEnvVar": "OMIM_API_KEY"
+    },
+    {
+      "name": "DrugBank",
+      "tools": ["drugbank_search", "drugbank_drug"],
+      "authRequired": true,
+      "credentialEnvVar": "DRUGBANK_API_KEY"
+    },
+    {
+      "name": "ChEMBL",
+      "tools": ["chembl_search", "chembl_bioactivity"],
+      "authRequired": false
+    },
+    {
+      "name": "PharmGKB",
+      "tools": ["pharmgkb_search"],
+      "authRequired": false
+    },
+    {
+      "name": "OpenTargets",
+      "tools": ["opentargets_search"],
+      "authRequired": false
+    },
+    {
+      "name": "FDA FAERS",
+      "tools": ["fda_faers_search"],
+      "authRequired": false
+    },
+    {
+      "name": "ClinicalTrials.gov",
+      "tools": ["clinicaltrials_search"],
+      "authRequired": false
+    }
+  ],
+  "credentials": [
+    {
+      "name": "OMIM API Key",
+      "envVar": "OMIM_API_KEY",
+      "required": true,
+      "description": "Required to access OMIM genetic disorder data.",
+      "obtainUrl": "https://www.omim.org/api"
+    },
+    {
+      "name": "DrugBank API Key",
+      "envVar": "DRUGBANK_API_KEY",
+      "required": true,
+      "description": "Required to access DrugBank drug data.",
+      "obtainUrl": "https://go.drugbank.com/public_users/sign_up"
+    }
+  ]
+}

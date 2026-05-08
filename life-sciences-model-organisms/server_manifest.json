@@ -1,0 +1,33 @@
+{
+  "name": "life-sciences-model-organisms",
+  "version": "0.1.0",
+  "domain": "Model Organisms",
+  "databases": [
+    {
+      "name": "FlyBase",
+      "tools": ["flybase_gene"],
+      "authRequired": false
+    },
+    {
+      "name": "WormBase",
+      "tools": ["wormbase_gene"],
+      "authRequired": false
+    },
+    {
+      "name": "ZFIN",
+      "tools": ["zfin_gene"],
+      "authRequired": false
+    },
+    {
+      "name": "MGI",
+      "tools": ["mgi_gene"],
+      "authRequired": false
+    },
+    {
+      "name": "SGD",
+      "tools": ["sgd_gene"],
+      "authRequired": false
+    }
+  ],
+  "credentials": []
+}

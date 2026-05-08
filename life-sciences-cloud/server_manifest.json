@@ -1,0 +1,32 @@
+{
+  "name": "life-sciences-cloud",
+  "version": "0.1.0",
+  "domain": "Cloud and HPC",
+  "databases": [
+    {
+      "name": "AWS Batch",
+      "tools": ["aws_batch_submit", "aws_batch_status"],
+      "authRequired": false
+    },
+    {
+      "name": "Terra",
+      "tools": ["terra_workspaces", "terra_submit"],
+      "authRequired": true,
+      "credentialEnvVar": "TERRA_TOKEN"
+    },
+    {
+      "name": "Galaxy",
+      "tools": ["galaxy_tools", "galaxy_submit", "galaxy_status"],
+      "authRequired": false
+    }
+  ],
+  "credentials": [
+    {
+      "name": "Terra OAuth Token",
+      "envVar": "TERRA_TOKEN",
+      "required": true,
+      "description": "OAuth token required to access Terra workspaces and submit workflows.",
+      "obtainUrl": "https://app.terra.bio/"
+    }
+  ]
+}

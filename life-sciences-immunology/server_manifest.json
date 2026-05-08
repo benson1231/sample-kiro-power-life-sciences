@@ -1,0 +1,38 @@
+{
+  "name": "life-sciences-immunology",
+  "version": "0.1.0",
+  "domain": "Immunology",
+  "databases": [
+    {
+      "name": "IEDB",
+      "tools": ["iedb_search"],
+      "authRequired": false
+    },
+    {
+      "name": "ImmPort",
+      "tools": ["immport_search"],
+      "authRequired": true,
+      "credentialEnvVar": "IMMPORT_USERNAME"
+    },
+    {
+      "name": "IMGT",
+      "tools": ["imgt_search"],
+      "authRequired": false
+    },
+    {
+      "name": "abYsis",
+      "tools": ["abysis_analyze"],
+      "authRequired": false
+    }
+  ],
+  "credentials": [
+    {
+      "name": "ImmPort Credentials",
+      "envVar": "IMMPORT_USERNAME",
+      "required": true,
+      "credentialType": "username_password",
+      "description": "Required to access ImmPort immunology study data. Also requires IMMPORT_PASSWORD.",
+      "obtainUrl": "https://www.immport.org/registration"
+    }
+  ]
+}

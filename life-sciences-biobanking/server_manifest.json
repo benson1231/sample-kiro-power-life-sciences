@@ -1,0 +1,33 @@
+{
+  "name": "life-sciences-biobanking",
+  "version": "0.1.0",
+  "domain": "Biobanking and Sample Management",
+  "databases": [
+    {
+      "name": "BBMRI",
+      "tools": ["bbmri_search"],
+      "authRequired": false
+    },
+    {
+      "name": "BioSample",
+      "tools": ["biosample_search"],
+      "authRequired": false
+    },
+    {
+      "name": "LIMS",
+      "tools": ["lims_sample", "lims_create_sample"],
+      "authRequired": false
+    },
+    {
+      "name": "Sample Inventory",
+      "tools": ["inventory_search"],
+      "authRequired": false
+    },
+    {
+      "name": "protocols.io",
+      "tools": ["protocols_search"],
+      "authRequired": false
+    }
+  ],
+  "credentials": []
+}

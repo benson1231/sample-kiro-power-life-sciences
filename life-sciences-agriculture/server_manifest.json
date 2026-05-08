@@ -1,0 +1,28 @@
+{
+  "name": "life-sciences-agriculture",
+  "version": "0.1.0",
+  "domain": "Agricultural and Plant Biology",
+  "databases": [
+    {
+      "name": "Phytozome",
+      "tools": ["phytozome_search"],
+      "authRequired": false
+    },
+    {
+      "name": "TAIR",
+      "tools": ["tair_search"],
+      "authRequired": false
+    },
+    {
+      "name": "Gramene",
+      "tools": ["gramene_search"],
+      "authRequired": false
+    },
+    {
+      "name": "PlantGDB",
+      "tools": ["plantgdb_search"],
+      "authRequired": false
+    }
+  ],
+  "credentials": []
+}

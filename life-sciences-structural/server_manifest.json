@@ -1,0 +1,28 @@
+{
+  "name": "life-sciences-structural",
+  "version": "0.1.0",
+  "domain": "Structural Biology",
+  "databases": [
+    {
+      "name": "PDB",
+      "tools": ["pdb_search", "pdb_fetch", "pdb_download"],
+      "authRequired": false
+    },
+    {
+      "name": "AlphaFold DB",
+      "tools": ["alphafold_lookup"],
+      "authRequired": false
+    },
+    {
+      "name": "CATH",
+      "tools": ["cath_classify"],
+      "authRequired": false
+    },
+    {
+      "name": "SCOP",
+      "tools": ["scop_classify"],
+      "authRequired": false
+    }
+  ],
+  "credentials": []
+}

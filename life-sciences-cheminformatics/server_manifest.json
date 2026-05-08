@@ -1,0 +1,47 @@
+{
+  "name": "life-sciences-cheminformatics",
+  "version": "0.1.0",
+  "domain": "Computational Chemistry and Drug Discovery",
+  "databases": [
+    {
+      "name": "PubChem",
+      "tools": ["pubchem_search", "pubchem_properties"],
+      "authRequired": false
+    },
+    {
+      "name": "ChemSpider",
+      "tools": ["chemspider_search"],
+      "authRequired": true,
+      "credentialEnvVar": "CHEMSPIDER_API_KEY"
+    },
+    {
+      "name": "ZINC",
+      "tools": ["zinc_search"],
+      "authRequired": false
+    },
+    {
+      "name": "RDKit",
+      "tools": ["rdkit_descriptors", "rdkit_substructure"],
+      "authRequired": false
+    },
+    {
+      "name": "SwissDock",
+      "tools": ["docking_submit"],
+      "authRequired": false
+    },
+    {
+      "name": "ADMETlab",
+      "tools": ["admet_predict"],
+      "authRequired": false
+    }
+  ],
+  "credentials": [
+    {
+      "name": "ChemSpider API Key",
+      "envVar": "CHEMSPIDER_API_KEY",
+      "required": true,
+      "description": "Required to access ChemSpider compound data.",
+      "obtainUrl": "https://developer.rsc.org/"
+    }
+  ]
+}

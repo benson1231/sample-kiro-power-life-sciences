@@ -1,0 +1,28 @@
+{
+  "name": "life-sciences-neuroscience",
+  "version": "0.1.0",
+  "domain": "Neuroscience",
+  "databases": [
+    {
+      "name": "Allen Brain Atlas",
+      "tools": ["allen_brain_search", "allen_brain_structure"],
+      "authRequired": false
+    },
+    {
+      "name": "NeuroMorpho",
+      "tools": ["neuromorpho_search"],
+      "authRequired": false
+    },
+    {
+      "name": "OpenNeuro",
+      "tools": ["openneuro_search"],
+      "authRequired": false
+    },
+    {
+      "name": "BrainMap",
+      "tools": ["brainmap_search"],
+      "authRequired": false
+    }
+  ],
+  "credentials": []
+}

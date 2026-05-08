@@ -1,0 +1,38 @@
+{
+  "name": "life-sciences-microbiology",
+  "version": "0.1.0",
+  "domain": "Microbiology and Metagenomics",
+  "databases": [
+    {
+      "name": "SILVA",
+      "tools": ["silva_search"],
+      "authRequired": false
+    },
+    {
+      "name": "Greengenes",
+      "tools": ["greengenes_search"],
+      "authRequired": false
+    },
+    {
+      "name": "QIIME 2",
+      "tools": ["qiime2_action"],
+      "authRequired": false
+    },
+    {
+      "name": "MG-RAST",
+      "tools": ["mgrast_search"],
+      "authRequired": false
+    },
+    {
+      "name": "BV-BRC",
+      "tools": ["bvbrc_search", "bvbrc_features"],
+      "authRequired": false
+    },
+    {
+      "name": "CARD",
+      "tools": ["card_search", "card_analyze"],
+      "authRequired": false
+    }
+  ],
+  "credentials": []
+}

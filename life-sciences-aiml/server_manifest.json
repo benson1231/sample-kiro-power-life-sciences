@@ -1,0 +1,23 @@
+{
+  "name": "life-sciences-aiml",
+  "version": "0.1.0",
+  "domain": "AI/ML for Life Sciences",
+  "databases": [
+    {
+      "name": "ESM",
+      "tools": ["esm_embeddings", "esm_structure"],
+      "authRequired": false
+    },
+    {
+      "name": "AlphaFold",
+      "tools": ["alphafold_predict", "alphafold_status"],
+      "authRequired": false
+    },
+    {
+      "name": "BioNLP",
+      "tools": ["bionlp_entities", "bionlp_qa"],
+      "authRequired": false
+    }
+  ],
+  "credentials": []
+}

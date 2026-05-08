@@ -1,0 +1,23 @@
+{
+  "name": "life-sciences-epigenomics",
+  "version": "0.1.0",
+  "domain": "Epigenomics",
+  "databases": [
+    {
+      "name": "IHEC",
+      "tools": ["ihec_search"],
+      "authRequired": false
+    },
+    {
+      "name": "Roadmap Epigenomics",
+      "tools": ["roadmap_search"],
+      "authRequired": false
+    },
+    {
+      "name": "MethBase",
+      "tools": ["methbase_search"],
+      "authRequired": false
+    }
+  ],
+  "credentials": []
+}

@@ -1,0 +1,42 @@
+{
+  "name": "life-sciences-healthcare",
+  "version": "0.1.0",
+  "domain": "Healthcare Standards",
+  "databases": [
+    {
+      "name": "FHIR",
+      "tools": ["fhir_search", "fhir_create"],
+      "authRequired": false
+    },
+    {
+      "name": "HL7 v2",
+      "tools": ["hl7_parse", "hl7_generate"],
+      "authRequired": false
+    },
+    {
+      "name": "OMOP CDM",
+      "tools": ["omop_search"],
+      "authRequired": false
+    },
+    {
+      "name": "REDCap",
+      "tools": ["redcap_records", "redcap_export"],
+      "authRequired": true,
+      "credentialEnvVar": "REDCAP_API_TOKEN"
+    },
+    {
+      "name": "DICOMweb",
+      "tools": ["dicomweb_query"],
+      "authRequired": false
+    }
+  ],
+  "credentials": [
+    {
+      "name": "REDCap API Token",
+      "envVar": "REDCAP_API_TOKEN",
+      "required": true,
+      "description": "Required to access REDCap project data.",
+      "obtainUrl": "https://www.project-redcap.org/"
+    }
+  ]
+}

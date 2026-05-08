@@ -1,0 +1,33 @@
+{
+  "name": "life-sciences-pathways",
+  "version": "0.1.0",
+  "domain": "Pathways and Interactions",
+  "databases": [
+    {
+      "name": "KEGG",
+      "tools": ["kegg_pathway", "kegg_search"],
+      "authRequired": false
+    },
+    {
+      "name": "Reactome",
+      "tools": ["reactome_search", "reactome_pathway"],
+      "authRequired": false
+    },
+    {
+      "name": "BioCyc",
+      "tools": ["biocyc_pathway"],
+      "authRequired": false
+    },
+    {
+      "name": "WikiPathways",
+      "tools": ["wikipathways_search"],
+      "authRequired": false
+    },
+    {
+      "name": "IntAct",
+      "tools": ["intact_interactions"],
+      "authRequired": false
+    }
+  ],
+  "credentials": []
+}

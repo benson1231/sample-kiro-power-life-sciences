@@ -1,0 +1,43 @@
+{
+  "name": "life-sciences-imaging",
+  "version": "0.1.0",
+  "domain": "Imaging and Microscopy",
+  "databases": [
+    {
+      "name": "OMERO",
+      "tools": ["omero_search"],
+      "authRequired": false
+    },
+    {
+      "name": "CellProfiler",
+      "tools": ["cellprofiler_run"],
+      "authRequired": false
+    },
+    {
+      "name": "ImageJ",
+      "tools": ["imagej_macro"],
+      "authRequired": false
+    },
+    {
+      "name": "DICOM",
+      "tools": ["dicom_query"],
+      "authRequired": false
+    },
+    {
+      "name": "BioImage Archive",
+      "tools": ["bioimage_search"],
+      "authRequired": false
+    },
+    {
+      "name": "IDR",
+      "tools": ["idr_search"],
+      "authRequired": false
+    },
+    {
+      "name": "EMPIAR",
+      "tools": ["empiar_search"],
+      "authRequired": false
+    }
+  ],
+  "credentials": []
+}

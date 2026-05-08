@@ -1,0 +1,23 @@
+{
+  "name": "life-sciences-ontologies",
+  "version": "0.1.0",
+  "domain": "Ontologies",
+  "databases": [
+    {
+      "name": "Gene Ontology",
+      "tools": ["go_search", "go_term", "go_annotations"],
+      "authRequired": false
+    },
+    {
+      "name": "HPO",
+      "tools": ["hpo_search", "hpo_term"],
+      "authRequired": false
+    },
+    {
+      "name": "Disease Ontology",
+      "tools": ["disease_ontology_search"],
+      "authRequired": false
+    }
+  ],
+  "credentials": []
+}

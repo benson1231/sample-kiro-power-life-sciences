@@ -1,0 +1,28 @@
+{
+  "name": "life-sciences-datastandards",
+  "version": "0.1.0",
+  "domain": "Data Standards and Formats",
+  "databases": [
+    {
+      "name": "MAGE-TAB",
+      "tools": ["magetab_validate", "magetab_parse"],
+      "authRequired": false
+    },
+    {
+      "name": "ISA-Tab",
+      "tools": ["isatab_validate", "isatab_parse"],
+      "authRequired": false
+    },
+    {
+      "name": "SBML",
+      "tools": ["sbml_validate", "sbml_parse"],
+      "authRequired": false
+    },
+    {
+      "name": "BioPAX",
+      "tools": ["biopax_parse"],
+      "authRequired": false
+    }
+  ],
+  "credentials": []
+}

@@ -1,0 +1,38 @@
+{
+  "name": "life-sciences-proteomics",
+  "version": "0.1.0",
+  "domain": "Proteomics",
+  "databases": [
+    {
+      "name": "UniProt",
+      "tools": ["uniprot_search", "uniprot_fetch", "uniprot_sequence"],
+      "authRequired": false
+    },
+    {
+      "name": "InterPro",
+      "tools": ["interpro_lookup"],
+      "authRequired": false
+    },
+    {
+      "name": "Pfam",
+      "tools": ["pfam_family"],
+      "authRequired": false
+    },
+    {
+      "name": "STRING",
+      "tools": ["string_interactions"],
+      "authRequired": false
+    },
+    {
+      "name": "PRIDE",
+      "tools": ["pride_search"],
+      "authRequired": false
+    },
+    {
+      "name": "neXtProt",
+      "tools": ["nextprot_entry"],
+      "authRequired": false
+    }
+  ],
+  "credentials": []
+}

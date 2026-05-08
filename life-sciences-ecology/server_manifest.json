@@ -1,0 +1,47 @@
+{
+  "name": "life-sciences-ecology",
+  "version": "0.1.0",
+  "domain": "Ecology and Environmental Biology",
+  "databases": [
+    {
+      "name": "GBIF",
+      "tools": ["gbif_occurrences", "gbif_taxonomy"],
+      "authRequired": false
+    },
+    {
+      "name": "BOLD",
+      "tools": ["bold_search"],
+      "authRequired": false
+    },
+    {
+      "name": "iNaturalist",
+      "tools": ["inaturalist_search"],
+      "authRequired": false
+    },
+    {
+      "name": "IUCN Red List",
+      "tools": ["iucn_species"],
+      "authRequired": true,
+      "credentialEnvVar": "IUCN_API_KEY"
+    },
+    {
+      "name": "GenBank Environmental",
+      "tools": ["genbank_env_search"],
+      "authRequired": false
+    },
+    {
+      "name": "MGnify",
+      "tools": ["mgnify_search"],
+      "authRequired": false
+    }
+  ],
+  "credentials": [
+    {
+      "name": "IUCN API Key",
+      "envVar": "IUCN_API_KEY",
+      "required": true,
+      "description": "Required to access IUCN Red List species data.",
+      "obtainUrl": "https://apiv3.iucnredlist.org/api/v3/token"
+    }
+  ]
+}

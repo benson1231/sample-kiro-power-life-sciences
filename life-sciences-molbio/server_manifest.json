@@ -1,0 +1,38 @@
+{
+  "name": "life-sciences-molbio",
+  "version": "0.1.0",
+  "domain": "Molecular Biology and Biochemistry",
+  "databases": [
+    {
+      "name": "NCBI BLAST",
+      "tools": ["blast_search", "blast_results"],
+      "authRequired": false
+    },
+    {
+      "name": "EBI MSA",
+      "tools": ["msa_align"],
+      "authRequired": false
+    },
+    {
+      "name": "HMMER",
+      "tools": ["hmmer_search"],
+      "authRequired": false
+    },
+    {
+      "name": "Primer3",
+      "tools": ["primer3_design", "primer_blast"],
+      "authRequired": false
+    },
+    {
+      "name": "Restriction Analysis",
+      "tools": ["restriction_analysis", "cloning_design"],
+      "authRequired": false
+    },
+    {
+      "name": "REBASE",
+      "tools": ["rebase_enzyme"],
+      "authRequired": false
+    }
+  ],
+  "credentials": []
+}

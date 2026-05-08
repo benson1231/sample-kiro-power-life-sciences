@@ -1,0 +1,83 @@
+{
+  "name": "life-sciences-genomics",
+  "version": "0.1.0",
+  "domain": "Genomics and Sequencing",
+  "databases": [
+    {
+      "name": "NCBI",
+      "tools": ["ncbi_search", "ncbi_fetch_sequence", "ncbi_pubmed_search"],
+      "authRequired": false,
+      "authRecommended": true,
+      "credentialEnvVar": "NCBI_API_KEY"
+    },
+    {
+      "name": "Ensembl",
+      "tools": ["ensembl_gene_lookup", "ensembl_variants", "ensembl_sequence"],
+      "authRequired": false
+    },
+    {
+      "name": "ClinVar",
+      "tools": ["clinvar_search", "clinvar_get_variation"],
+      "authRequired": false,
+      "authRecommended": true,
+      "credentialEnvVar": "NCBI_API_KEY"
+    },
+    {
+      "name": "GEO",
+      "tools": ["geo_search", "geo_get_dataset"],
+      "authRequired": false
+    },
+    {
+      "name": "SRA",
+      "tools": ["sra_search"],
+      "authRequired": false
+    },
+    {
+      "name": "COSMIC",
+      "tools": ["cosmic_search"],
+      "authRequired": true,
+      "credentialEnvVar": "COSMIC_API_KEY"
+    },
+    {
+      "name": "gnomAD",
+      "tools": ["gnomad_variant"],
+      "authRequired": false
+    },
+    {
+      "name": "dbSNP",
+      "tools": ["dbsnp_lookup"],
+      "authRequired": false
+    },
+    {
+      "name": "ENCODE",
+      "tools": ["encode_search"],
+      "authRequired": false
+    },
+    {
+      "name": "1000 Genomes",
+      "tools": ["thousand_genomes_frequency"],
+      "authRequired": false
+    },
+    {
+      "name": "DDBJ",
+      "tools": ["ddbj_search", "ddbj_fetch_sequence"],
+      "authRequired": false
+    }
+  ],
+  "credentials": [
+    {
+      "name": "NCBI API Key",
+      "envVar": "NCBI_API_KEY",
+      "required": false,
+      "description": "Increases NCBI rate limit from 3 to 10 requests/second. Also used by ClinVar, GEO, and SRA tools.",
+      "obtainUrl": "https://www.ncbi.nlm.nih.gov/account/settings/"
+    },
+    {
+      "name": "COSMIC API Key",
+      "envVar": "COSMIC_API_KEY",
+      "required": true,
+      "description": "Required to access COSMIC somatic mutation data.",
+      "obtainUrl": "https://cancer.sanger.ac.uk/cosmic/register"
+    }
+  ]
+}

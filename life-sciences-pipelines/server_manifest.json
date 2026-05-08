@@ -1,0 +1,28 @@
+{
+  "name": "life-sciences-pipelines",
+  "version": "0.1.0",
+  "domain": "Pipelines",
+  "databases": [
+    {
+      "name": "nf-core",
+      "tools": ["nfcore_list", "nfcore_pipeline"],
+      "authRequired": false
+    },
+    {
+      "name": "WDL Pipelines",
+      "tools": ["wdl_list", "wdl_pipeline"],
+      "authRequired": false
+    },
+    {
+      "name": "CWL Pipelines",
+      "tools": ["cwl_list", "cwl_pipeline"],
+      "authRequired": false
+    },
+    {
+      "name": "GitHub Community",
+      "tools": ["github_pipelines", "pipeline_healthomics_import"],
+      "authRequired": false
+    }
+  ],
+  "credentials": []
+}

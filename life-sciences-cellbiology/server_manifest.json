@@ -1,0 +1,23 @@
+{
+  "name": "life-sciences-cellbiology",
+  "version": "0.1.0",
+  "domain": "Cell Biology",
+  "databases": [
+    {
+      "name": "Cell Atlas",
+      "tools": ["cell_atlas_search"],
+      "authRequired": false
+    },
+    {
+      "name": "CellxGene",
+      "tools": ["cellxgene_datasets", "cellxgene_expression"],
+      "authRequired": false
+    },
+    {
+      "name": "Single Cell Expression Atlas",
+      "tools": ["scea_search"],
+      "authRequired": false
+    }
+  ],
+  "credentials": []
+}

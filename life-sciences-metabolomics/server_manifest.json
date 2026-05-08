@@ -1,0 +1,28 @@
+{
+  "name": "life-sciences-metabolomics",
+  "version": "0.1.0",
+  "domain": "Metabolomics",
+  "databases": [
+    {
+      "name": "HMDB",
+      "tools": ["hmdb_search"],
+      "authRequired": false
+    },
+    {
+      "name": "MetaboLights",
+      "tools": ["metabolights_search"],
+      "authRequired": false
+    },
+    {
+      "name": "METLIN",
+      "tools": ["metlin_search"],
+      "authRequired": false
+    },
+    {
+      "name": "MassBank",
+      "tools": ["massbank_search"],
+      "authRequired": false
+    }
+  ],
+  "credentials": []
+}
