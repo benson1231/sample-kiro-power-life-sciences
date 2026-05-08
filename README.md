@@ -1,7 +1,5 @@
 # KIRO FOR LIFE SCIENCES
 
-## WHAT IS THIS?
-
 Kiro for Life Sciences is a comprehensive Power package that turns Kiro into
 a full-featured life sciences development environment. It provides:
 
