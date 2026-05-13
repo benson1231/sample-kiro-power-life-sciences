@@ -1,0 +1,3167 @@
+{
+  "name": "kiro-life-sciences",
+  "version": "0.1.0",
+  "description": "Kiro for Life Sciences — a unified bundle of Powers, MCP servers, skills, and steering files for life sciences development across genomics, proteomics, structural biology, clinical research, ecology, neuroscience, and more.",
+  "components": {
+    "powers": [
+      {
+        "name": "aws-healthomics",
+        "version": "1.0.0",
+        "required": true,
+        "description": "AWS HealthOmics Power for creating, running, debugging, and optimizing genomics workflows using WDL, CWL, and Nextflow."
+      }
+    ],
+    "mcpServers": [
+      {
+        "name": "life-sciences-genomics",
+        "version": "0.1.0",
+        "pypiPackage": "life-sciences-genomics",
+        "description": "MCP server for genomics and sequencing databases including NCBI, Ensembl, ClinVar, GEO, SRA, and more.",
+        "domain": "Genomics and Sequencing",
+        "databases": [
+          {
+            "name": "NCBI",
+            "description": "National Center for Biotechnology Information — gene, nucleotide, protein, and literature search.",
+            "apiBaseUrl": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "3 req/s without key, 10 req/s with API key",
+            "license": "Public Domain",
+            "exampleQueries": [
+              "Search for BRCA1 gene",
+              "Fetch nucleotide sequence by accession"
+            ],
+            "dataFormats": [
+              "FASTA",
+              "GenBank",
+              "JSON",
+              "XML"
+            ],
+            "url": "https://www.ncbi.nlm.nih.gov/"
+          },
+          {
+            "name": "Ensembl",
+            "description": "Genome browser for vertebrate genomes — gene annotation, variants, and comparative genomics.",
+            "apiBaseUrl": "https://rest.ensembl.org/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "15 req/s",
+            "license": "Apache 2.0",
+            "exampleQueries": [
+              "Lookup gene by symbol and species"
+            ],
+            "dataFormats": [
+              "JSON",
+              "FASTA",
+              "GFF3"
+            ],
+            "url": "https://www.ensembl.org/"
+          },
+          {
+            "name": "ClinVar",
+            "description": "Public archive of reports on relationships between human variation and phenotypes.",
+            "apiBaseUrl": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "3 req/s without key",
+            "license": "Public Domain",
+            "exampleQueries": [
+              "Query variant by rsID"
+            ],
+            "dataFormats": [
+              "JSON",
+              "XML",
+              "VCF"
+            ],
+            "url": "https://www.ncbi.nlm.nih.gov/clinvar/"
+          },
+          {
+            "name": "GEO",
+            "description": "Gene Expression Omnibus — public repository of gene expression and functional genomics data.",
+            "apiBaseUrl": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "3 req/s without key",
+            "license": "Public Domain",
+            "exampleQueries": [
+              "Search GEO datasets by keyword"
+            ],
+            "dataFormats": [
+              "SOFT",
+              "MINiML",
+              "JSON"
+            ],
+            "url": "https://www.ncbi.nlm.nih.gov/geo/"
+          },
+          {
+            "name": "SRA",
+            "description": "Sequence Read Archive — raw sequencing data from high-throughput sequencing platforms.",
+            "apiBaseUrl": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "3 req/s without key",
+            "license": "Public Domain",
+            "exampleQueries": [
+              "Search SRA by BioProject"
+            ],
+            "dataFormats": [
+              "SRA",
+              "FASTQ",
+              "JSON"
+            ],
+            "url": "https://www.ncbi.nlm.nih.gov/sra/"
+          },
+          {
+            "name": "COSMIC",
+            "description": "Catalogue Of Somatic Mutations In Cancer — somatic mutation data in human cancers.",
+            "apiBaseUrl": "https://cancer.sanger.ac.uk/cosmic/api/",
+            "authRequired": true,
+            "credentialType": "api_key",
+            "rateLimits": "10 req/s with key",
+            "license": "Non-commercial use",
+            "exampleQueries": [
+              "Search mutations by gene"
+            ],
+            "dataFormats": [
+              "JSON",
+              "TSV"
+            ],
+            "url": "https://cancer.sanger.ac.uk/cosmic"
+          },
+          {
+            "name": "gnomAD",
+            "description": "Genome Aggregation Database — population allele frequencies from exome and genome sequencing.",
+            "apiBaseUrl": "https://gnomad.broadinstitute.org/api/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Query allele frequency by variant"
+            ],
+            "dataFormats": [
+              "JSON",
+              "VCF"
+            ],
+            "url": "https://gnomad.broadinstitute.org/"
+          },
+          {
+            "name": "dbSNP",
+            "description": "Database of Single Nucleotide Polymorphisms and other short genetic variations.",
+            "apiBaseUrl": "https://api.ncbi.nlm.nih.gov/variation/v0/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "3 req/s",
+            "license": "Public Domain",
+            "exampleQueries": [
+              "Lookup variant by rsID"
+            ],
+            "dataFormats": [
+              "JSON",
+              "VCF"
+            ],
+            "url": "https://www.ncbi.nlm.nih.gov/snp/"
+          },
+          {
+            "name": "ENCODE",
+            "description": "Encyclopedia of DNA Elements — functional elements in the human genome.",
+            "apiBaseUrl": "https://www.encodeproject.org/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "10 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Search experiments by biosample"
+            ],
+            "dataFormats": [
+              "JSON",
+              "BED",
+              "bigWig",
+              "BAM"
+            ],
+            "url": "https://www.encodeproject.org/"
+          },
+          {
+            "name": "1000 Genomes",
+            "description": "International Genome Sample Resource — population-level genetic variation data.",
+            "apiBaseUrl": "https://rest.ensembl.org/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "15 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Query population allele frequencies"
+            ],
+            "dataFormats": [
+              "JSON",
+              "VCF"
+            ],
+            "url": "https://www.internationalgenome.org/"
+          },
+          {
+            "name": "DDBJ",
+            "description": "DNA Data Bank of Japan — nucleotide sequence archive.",
+            "apiBaseUrl": "https://ddbj.nig.ac.jp/services/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Fetch sequence by accession"
+            ],
+            "dataFormats": [
+              "FASTA",
+              "JSON",
+              "XML"
+            ],
+            "url": "https://www.ddbj.nig.ac.jp/"
+          }
+        ],
+        "credentials": [
+          {
+            "name": "NCBI API Key",
+            "type": "api_key",
+            "required": false,
+            "description": "Increases NCBI rate limit from 3 to 10 requests/second.",
+            "obtainUrl": "https://www.ncbi.nlm.nih.gov/account/settings/",
+            "envVar": "NCBI_API_KEY"
+          },
+          {
+            "name": "COSMIC API Key",
+            "type": "api_key",
+            "required": true,
+            "description": "Required to access COSMIC somatic mutation data.",
+            "obtainUrl": "https://cancer.sanger.ac.uk/cosmic/register",
+            "envVar": "COSMIC_API_KEY"
+          }
+        ],
+        "dependencies": []
+      },
+      {
+        "name": "life-sciences-proteomics",
+        "version": "0.1.0",
+        "pypiPackage": "life-sciences-proteomics",
+        "description": "MCP server for proteomics databases including UniProt, InterPro, Pfam, STRING, PRIDE, and neXtProt.",
+        "domain": "Proteomics",
+        "databases": [
+          {
+            "name": "UniProt",
+            "description": "Universal Protein Resource — comprehensive protein sequence and functional information.",
+            "apiBaseUrl": "https://rest.uniprot.org/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "20 req/s",
+            "license": "CC BY 4.0",
+            "exampleQueries": [
+              "Search protein by gene name"
+            ],
+            "dataFormats": [
+              "JSON",
+              "FASTA",
+              "XML",
+              "TSV"
+            ],
+            "url": "https://www.uniprot.org/"
+          },
+          {
+            "name": "InterPro",
+            "description": "Protein families, domains, and functional sites classification.",
+            "apiBaseUrl": "https://www.ebi.ac.uk/interpro/api/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "10 req/s",
+            "license": "CC BY 4.0",
+            "exampleQueries": [
+              "Query by protein accession"
+            ],
+            "dataFormats": [
+              "JSON",
+              "TSV"
+            ],
+            "url": "https://www.ebi.ac.uk/interpro/"
+          },
+          {
+            "name": "Pfam",
+            "description": "Protein families database — multiple sequence alignments and hidden Markov models.",
+            "apiBaseUrl": "https://www.ebi.ac.uk/interpro/api/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "10 req/s",
+            "license": "CC0 1.0",
+            "exampleQueries": [
+              "Query by family ID"
+            ],
+            "dataFormats": [
+              "JSON",
+              "Stockholm"
+            ],
+            "url": "https://www.ebi.ac.uk/interpro/entry/pfam/"
+          },
+          {
+            "name": "STRING",
+            "description": "Protein-protein interaction networks and functional enrichment analysis.",
+            "apiBaseUrl": "https://string-db.org/api/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "1 req/s",
+            "license": "CC BY 4.0",
+            "exampleQueries": [
+              "Query interactions by protein name"
+            ],
+            "dataFormats": [
+              "JSON",
+              "TSV",
+              "PNG"
+            ],
+            "url": "https://string-db.org/"
+          },
+          {
+            "name": "PRIDE",
+            "description": "Proteomics Identifications Database — mass spectrometry proteomics data.",
+            "apiBaseUrl": "https://www.ebi.ac.uk/pride/ws/archive/v2/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "10 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Search projects by keyword"
+            ],
+            "dataFormats": [
+              "JSON",
+              "mzML",
+              "mzIdentML"
+            ],
+            "url": "https://www.ebi.ac.uk/pride/"
+          },
+          {
+            "name": "neXtProt",
+            "description": "Human protein knowledgebase — curated data on human proteins.",
+            "apiBaseUrl": "https://api.nextprot.org/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "CC BY 4.0",
+            "exampleQueries": [
+              "Query by gene name"
+            ],
+            "dataFormats": [
+              "JSON",
+              "XML",
+              "FASTA"
+            ],
+            "url": "https://www.nextprot.org/"
+          }
+        ],
+        "credentials": [],
+        "dependencies": []
+      },
+      {
+        "name": "life-sciences-structural",
+        "version": "0.1.0",
+        "pypiPackage": "life-sciences-structural",
+        "description": "MCP server for structural biology databases including PDB, AlphaFold DB, CATH, and SCOP.",
+        "domain": "Structural Biology",
+        "databases": [
+          {
+            "name": "PDB",
+            "description": "Protein Data Bank — 3D structural data of biological macromolecules.",
+            "apiBaseUrl": "https://data.rcsb.org/rest/v1/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "10 req/s",
+            "license": "CC0 1.0",
+            "exampleQueries": [
+              "Search structures by keyword",
+              "Fetch structure by PDB ID"
+            ],
+            "dataFormats": [
+              "PDB",
+              "mmCIF",
+              "JSON"
+            ],
+            "url": "https://www.rcsb.org/"
+          },
+          {
+            "name": "AlphaFold DB",
+            "description": "AlphaFold Protein Structure Database — AI-predicted protein structures.",
+            "apiBaseUrl": "https://alphafold.ebi.ac.uk/api/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "10 req/s",
+            "license": "CC BY 4.0",
+            "exampleQueries": [
+              "Query by UniProt accession"
+            ],
+            "dataFormats": [
+              "PDB",
+              "mmCIF",
+              "JSON"
+            ],
+            "url": "https://alphafold.ebi.ac.uk/"
+          },
+          {
+            "name": "CATH",
+            "description": "Protein structure classification — Class, Architecture, Topology, Homologous superfamily.",
+            "apiBaseUrl": "https://www.cathdb.info/api/rest/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "CC BY 4.0",
+            "exampleQueries": [
+              "Get domain classification by PDB ID"
+            ],
+            "dataFormats": [
+              "JSON"
+            ],
+            "url": "https://www.cathdb.info/"
+          },
+          {
+            "name": "SCOP",
+            "description": "Structural Classification of Proteins — hierarchical classification of protein structures.",
+            "apiBaseUrl": "https://scop.mrc-lmb.cam.ac.uk/api/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Classify structure by PDB ID"
+            ],
+            "dataFormats": [
+              "JSON"
+            ],
+            "url": "https://scop.mrc-lmb.cam.ac.uk/"
+          }
+        ],
+        "credentials": [],
+        "dependencies": []
+      },
+      {
+        "name": "life-sciences-pathways",
+        "version": "0.1.0",
+        "pypiPackage": "life-sciences-pathways",
+        "description": "MCP server for pathway and interaction databases including KEGG, Reactome, BioCyc, WikiPathways, and IntAct.",
+        "domain": "Pathways and Interactions",
+        "databases": [
+          {
+            "name": "KEGG",
+            "description": "Kyoto Encyclopedia of Genes and Genomes — pathway maps and molecular interaction networks.",
+            "apiBaseUrl": "https://rest.kegg.jp/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "10 req/s",
+            "license": "Academic use",
+            "exampleQueries": [
+              "Get pathway by ID",
+              "Search pathways by gene"
+            ],
+            "dataFormats": [
+              "JSON",
+              "KGML",
+              "TSV"
+            ],
+            "url": "https://www.kegg.jp/"
+          },
+          {
+            "name": "Reactome",
+            "description": "Open-source curated pathway database for human biology.",
+            "apiBaseUrl": "https://reactome.org/ContentService/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "20 req/s",
+            "license": "CC BY 4.0",
+            "exampleQueries": [
+              "Search pathways by keyword"
+            ],
+            "dataFormats": [
+              "JSON",
+              "SBML",
+              "BioPAX"
+            ],
+            "url": "https://reactome.org/"
+          },
+          {
+            "name": "BioCyc",
+            "description": "Collection of pathway/genome databases for model organisms.",
+            "apiBaseUrl": "https://websvc.biocyc.org/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Academic use",
+            "exampleQueries": [
+              "Query metabolic pathways by organism"
+            ],
+            "dataFormats": [
+              "JSON",
+              "XML"
+            ],
+            "url": "https://biocyc.org/"
+          },
+          {
+            "name": "WikiPathways",
+            "description": "Open, collaborative platform for biological pathway curation.",
+            "apiBaseUrl": "https://webservice.wikipathways.org/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "10 req/s",
+            "license": "CC BY 3.0",
+            "exampleQueries": [
+              "Search pathways by keyword"
+            ],
+            "dataFormats": [
+              "JSON",
+              "GPML",
+              "SVG"
+            ],
+            "url": "https://www.wikipathways.org/"
+          },
+          {
+            "name": "IntAct",
+            "description": "Molecular interaction database — curated binary and complex interactions.",
+            "apiBaseUrl": "https://www.ebi.ac.uk/intact/ws/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "10 req/s",
+            "license": "CC BY 4.0",
+            "exampleQueries": [
+              "Search interactions by protein"
+            ],
+            "dataFormats": [
+              "JSON",
+              "MI-TAB",
+              "XML"
+            ],
+            "url": "https://www.ebi.ac.uk/intact/"
+          }
+        ],
+        "credentials": [],
+        "dependencies": []
+      },
+      {
+        "name": "life-sciences-ontologies",
+        "version": "0.1.0",
+        "pypiPackage": "life-sciences-ontologies",
+        "description": "MCP server for ontology databases including Gene Ontology, HPO, and Disease Ontology.",
+        "domain": "Ontologies",
+        "databases": [
+          {
+            "name": "Gene Ontology",
+            "description": "Structured vocabulary for gene product attributes across species.",
+            "apiBaseUrl": "https://api.geneontology.org/api/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "10 req/s",
+            "license": "CC BY 4.0",
+            "exampleQueries": [
+              "Search GO terms by keyword"
+            ],
+            "dataFormats": [
+              "JSON",
+              "OBO",
+              "OWL"
+            ],
+            "url": "http://geneontology.org/"
+          },
+          {
+            "name": "HPO",
+            "description": "Human Phenotype Ontology — standardized vocabulary of phenotypic abnormalities.",
+            "apiBaseUrl": "https://hpo.jax.org/api/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "10 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Search phenotype terms"
+            ],
+            "dataFormats": [
+              "JSON",
+              "OBO"
+            ],
+            "url": "https://hpo.jax.org/"
+          },
+          {
+            "name": "Disease Ontology",
+            "description": "Standardized ontology for human disease terms and cross-references.",
+            "apiBaseUrl": "https://www.disease-ontology.org/api/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "CC0 1.0",
+            "exampleQueries": [
+              "Search disease terms"
+            ],
+            "dataFormats": [
+              "JSON",
+              "OBO",
+              "OWL"
+            ],
+            "url": "https://disease-ontology.org/"
+          }
+        ],
+        "credentials": [],
+        "dependencies": []
+      },
+      {
+        "name": "life-sciences-clinical",
+        "version": "0.1.0",
+        "pypiPackage": "life-sciences-clinical",
+        "description": "MCP server for clinical and pharma databases including OMIM, DrugBank, ChEMBL, PharmGKB, OpenTargets, FDA FAERS, and ClinicalTrials.gov.",
+        "domain": "Clinical and Pharma",
+        "databases": [
+          {
+            "name": "OMIM",
+            "description": "Online Mendelian Inheritance in Man — catalog of human genes and genetic disorders.",
+            "apiBaseUrl": "https://api.omim.org/api/",
+            "authRequired": true,
+            "credentialType": "api_key",
+            "rateLimits": "4 req/s",
+            "license": "Non-commercial use",
+            "exampleQueries": [
+              "Search by gene symbol"
+            ],
+            "dataFormats": [
+              "JSON",
+              "XML"
+            ],
+            "url": "https://www.omim.org/"
+          },
+          {
+            "name": "DrugBank",
+            "description": "Comprehensive drug and drug target database.",
+            "apiBaseUrl": "https://go.drugbank.com/api/v1/",
+            "authRequired": true,
+            "credentialType": "api_key",
+            "rateLimits": "5 req/s",
+            "license": "CC BY-NC 4.0",
+            "exampleQueries": [
+              "Search drugs by name"
+            ],
+            "dataFormats": [
+              "JSON",
+              "XML"
+            ],
+            "url": "https://go.drugbank.com/"
+          },
+          {
+            "name": "ChEMBL",
+            "description": "Bioactivity database of drug-like small molecules.",
+            "apiBaseUrl": "https://www.ebi.ac.uk/chembl/api/data/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "10 req/s",
+            "license": "CC BY-SA 3.0",
+            "exampleQueries": [
+              "Search compounds by name"
+            ],
+            "dataFormats": [
+              "JSON",
+              "XML",
+              "SDF"
+            ],
+            "url": "https://www.ebi.ac.uk/chembl/"
+          },
+          {
+            "name": "PharmGKB",
+            "description": "Pharmacogenomics knowledge base — gene-drug-disease relationships.",
+            "apiBaseUrl": "https://api.pharmgkb.org/v1/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "CC BY-SA 4.0",
+            "exampleQueries": [
+              "Search by drug name"
+            ],
+            "dataFormats": [
+              "JSON",
+              "TSV"
+            ],
+            "url": "https://www.pharmgkb.org/"
+          },
+          {
+            "name": "OpenTargets",
+            "description": "Target identification and validation platform for drug discovery.",
+            "apiBaseUrl": "https://api.platform.opentargets.org/api/v4/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "10 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Search targets by gene"
+            ],
+            "dataFormats": [
+              "JSON"
+            ],
+            "url": "https://platform.opentargets.org/"
+          },
+          {
+            "name": "FDA FAERS",
+            "description": "FDA Adverse Event Reporting System — post-market drug safety surveillance.",
+            "apiBaseUrl": "https://api.fda.gov/drug/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "40 req/min without key",
+            "license": "Public Domain",
+            "exampleQueries": [
+              "Search adverse events by drug"
+            ],
+            "dataFormats": [
+              "JSON"
+            ],
+            "url": "https://open.fda.gov/apis/drug/event/"
+          },
+          {
+            "name": "ClinicalTrials.gov",
+            "description": "Registry and results database of clinical studies worldwide.",
+            "apiBaseUrl": "https://clinicaltrials.gov/api/v2/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "10 req/s",
+            "license": "Public Domain",
+            "exampleQueries": [
+              "Search trials by condition"
+            ],
+            "dataFormats": [
+              "JSON",
+              "CSV"
+            ],
+            "url": "https://clinicaltrials.gov/"
+          }
+        ],
+        "credentials": [
+          {
+            "name": "OMIM API Key",
+            "type": "api_key",
+            "required": true,
+            "description": "Required to access OMIM genetic disorder data.",
+            "obtainUrl": "https://www.omim.org/api",
+            "envVar": "OMIM_API_KEY"
+          },
+          {
+            "name": "DrugBank API Key",
+            "type": "api_key",
+            "required": true,
+            "description": "Required to access DrugBank drug and target data.",
+            "obtainUrl": "https://go.drugbank.com/public_users/sign_up",
+            "envVar": "DRUGBANK_API_KEY"
+          }
+        ],
+        "dependencies": []
+      },
+      {
+        "name": "life-sciences-model-organisms",
+        "version": "0.1.0",
+        "pypiPackage": "life-sciences-model-organisms",
+        "description": "MCP server for model organism databases including FlyBase, WormBase, ZFIN, MGI, and SGD.",
+        "domain": "Model Organisms",
+        "databases": [
+          {
+            "name": "FlyBase",
+            "description": "Drosophila genome database — genes, alleles, phenotypes, and expression data.",
+            "apiBaseUrl": "https://api.flybase.org/api/v1.0/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Search genes by symbol"
+            ],
+            "dataFormats": [
+              "JSON",
+              "FASTA"
+            ],
+            "url": "https://flybase.org/"
+          },
+          {
+            "name": "WormBase",
+            "description": "C. elegans and related nematode genome database.",
+            "apiBaseUrl": "https://wormbase.org/rest/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Search genes by name"
+            ],
+            "dataFormats": [
+              "JSON"
+            ],
+            "url": "https://wormbase.org/"
+          },
+          {
+            "name": "ZFIN",
+            "description": "Zebrafish Information Network — zebrafish genetics and genomics.",
+            "apiBaseUrl": "https://zfin.org/action/api/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Search zebrafish genes"
+            ],
+            "dataFormats": [
+              "JSON"
+            ],
+            "url": "https://zfin.org/"
+          },
+          {
+            "name": "MGI",
+            "description": "Mouse Genome Informatics — mouse gene, allele, and phenotype data.",
+            "apiBaseUrl": "https://www.informatics.jax.org/api/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Search mouse genes by symbol"
+            ],
+            "dataFormats": [
+              "JSON",
+              "TSV"
+            ],
+            "url": "https://www.informatics.jax.org/"
+          },
+          {
+            "name": "SGD",
+            "description": "Saccharomyces Genome Database — yeast genome and functional data.",
+            "apiBaseUrl": "https://www.yeastgenome.org/backend/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Search yeast genes"
+            ],
+            "dataFormats": [
+              "JSON",
+              "FASTA"
+            ],
+            "url": "https://www.yeastgenome.org/"
+          }
+        ],
+        "credentials": [],
+        "dependencies": []
+      },
+      {
+        "name": "life-sciences-molbio",
+        "version": "0.1.0",
+        "pypiPackage": "life-sciences-molbio",
+        "description": "MCP server for molecular biology tools including BLAST, Clustal Omega, MUSCLE, HMMER, Primer3, and restriction enzyme analysis.",
+        "domain": "Molecular Biology and Biochemistry",
+        "databases": [
+          {
+            "name": "BLAST",
+            "description": "Basic Local Alignment Search Tool — sequence similarity search.",
+            "apiBaseUrl": "https://blast.ncbi.nlm.nih.gov/Blast.cgi",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "1 req/s",
+            "license": "Public Domain",
+            "exampleQueries": [
+              "Submit BLAST search",
+              "Retrieve BLAST results"
+            ],
+            "dataFormats": [
+              "JSON",
+              "XML",
+              "TSV"
+            ],
+            "url": "https://blast.ncbi.nlm.nih.gov/"
+          },
+          {
+            "name": "Clustal Omega",
+            "description": "Multiple sequence alignment tool for protein and nucleotide sequences.",
+            "apiBaseUrl": "https://www.ebi.ac.uk/Tools/services/rest/clustalo/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "1 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Align multiple sequences"
+            ],
+            "dataFormats": [
+              "FASTA",
+              "Clustal",
+              "JSON"
+            ],
+            "url": "https://www.ebi.ac.uk/Tools/msa/clustalo/"
+          },
+          {
+            "name": "MUSCLE",
+            "description": "Multiple sequence alignment with high accuracy and throughput.",
+            "apiBaseUrl": "https://www.ebi.ac.uk/Tools/services/rest/muscle/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "1 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Align protein sequences"
+            ],
+            "dataFormats": [
+              "FASTA",
+              "Clustal"
+            ],
+            "url": "https://www.ebi.ac.uk/Tools/msa/muscle/"
+          },
+          {
+            "name": "HMMER",
+            "description": "Biosequence analysis using profile hidden Markov models.",
+            "apiBaseUrl": "https://www.ebi.ac.uk/Tools/hmmer/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "1 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Search protein families by sequence"
+            ],
+            "dataFormats": [
+              "JSON",
+              "TSV"
+            ],
+            "url": "https://www.ebi.ac.uk/Tools/hmmer/"
+          },
+          {
+            "name": "Primer3",
+            "description": "Primer design tool for PCR and sequencing.",
+            "apiBaseUrl": "https://primer3.ut.ee/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Design primers for target sequence"
+            ],
+            "dataFormats": [
+              "JSON"
+            ],
+            "url": "https://primer3.ut.ee/"
+          },
+          {
+            "name": "PrimerBLAST",
+            "description": "Primer design with specificity checking via BLAST.",
+            "apiBaseUrl": "https://www.ncbi.nlm.nih.gov/tools/primer-blast/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "1 req/s",
+            "license": "Public Domain",
+            "exampleQueries": [
+              "Design specific primers for gene"
+            ],
+            "dataFormats": [
+              "JSON",
+              "XML"
+            ],
+            "url": "https://www.ncbi.nlm.nih.gov/tools/primer-blast/"
+          },
+          {
+            "name": "Restriction Enzymes",
+            "description": "Restriction enzyme recognition site analysis and fragment prediction.",
+            "apiBaseUrl": "https://rest.uniprot.org/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Find restriction sites in sequence"
+            ],
+            "dataFormats": [
+              "JSON"
+            ],
+            "url": "https://rebase.neb.com/"
+          },
+          {
+            "name": "REBASE",
+            "description": "Restriction Enzyme Database — comprehensive enzyme information.",
+            "apiBaseUrl": "https://rebase.neb.com/rebase/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Search enzymes by recognition site"
+            ],
+            "dataFormats": [
+              "JSON",
+              "TSV"
+            ],
+            "url": "https://rebase.neb.com/"
+          },
+          {
+            "name": "Cloning Design",
+            "description": "In-silico cloning and vector design tools.",
+            "apiBaseUrl": "https://benchling.com/api/v2/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Design cloning strategy"
+            ],
+            "dataFormats": [
+              "JSON",
+              "GenBank"
+            ],
+            "url": "https://benchling.com/"
+          }
+        ],
+        "credentials": [],
+        "dependencies": []
+      },
+      {
+        "name": "life-sciences-cheminformatics",
+        "version": "0.1.0",
+        "pypiPackage": "life-sciences-cheminformatics",
+        "description": "MCP server for computational chemistry and drug discovery tools including PubChem, ChemSpider, ZINC, RDKit, and docking tools.",
+        "domain": "Computational Chemistry and Drug Discovery",
+        "databases": [
+          {
+            "name": "PubChem",
+            "description": "Open chemistry database — chemical structures, properties, and bioactivities.",
+            "apiBaseUrl": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Public Domain",
+            "exampleQueries": [
+              "Search compounds by name",
+              "Get molecular properties"
+            ],
+            "dataFormats": [
+              "JSON",
+              "SDF",
+              "SMILES"
+            ],
+            "url": "https://pubchem.ncbi.nlm.nih.gov/"
+          },
+          {
+            "name": "ChemSpider",
+            "description": "Chemical structure database with property predictions.",
+            "apiBaseUrl": "https://api.rsc.org/compounds/v1/",
+            "authRequired": true,
+            "credentialType": "api_key",
+            "rateLimits": "5 req/s",
+            "license": "Non-commercial use",
+            "exampleQueries": [
+              "Search by SMILES string"
+            ],
+            "dataFormats": [
+              "JSON",
+              "MOL"
+            ],
+            "url": "https://www.chemspider.com/"
+          },
+          {
+            "name": "ZINC",
+            "description": "Free database of commercially available compounds for virtual screening.",
+            "apiBaseUrl": "https://zinc15.docking.org/api/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Search drug-like compounds"
+            ],
+            "dataFormats": [
+              "JSON",
+              "SDF",
+              "SMILES"
+            ],
+            "url": "https://zinc15.docking.org/"
+          },
+          {
+            "name": "RDKit",
+            "description": "Open-source cheminformatics toolkit — molecular descriptors and substructure search.",
+            "apiBaseUrl": "https://rdkit.org/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "N/A (local)",
+            "license": "BSD 3-Clause",
+            "exampleQueries": [
+              "Calculate molecular descriptors",
+              "Substructure search"
+            ],
+            "dataFormats": [
+              "SMILES",
+              "SDF",
+              "JSON"
+            ],
+            "url": "https://www.rdkit.org/"
+          },
+          {
+            "name": "AutoDock/SwissDock",
+            "description": "Molecular docking tools for protein-ligand binding prediction.",
+            "apiBaseUrl": "https://www.swissdock.ch/api/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "1 req/min",
+            "license": "Academic use",
+            "exampleQueries": [
+              "Submit docking job"
+            ],
+            "dataFormats": [
+              "PDB",
+              "MOL2",
+              "JSON"
+            ],
+            "url": "https://www.swissdock.ch/"
+          },
+          {
+            "name": "ADMET",
+            "description": "Absorption, Distribution, Metabolism, Excretion, and Toxicity prediction tools.",
+            "apiBaseUrl": "https://admetmesh.scbdd.com/api/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Predict ADMET properties for compound"
+            ],
+            "dataFormats": [
+              "JSON"
+            ],
+            "url": "https://admetmesh.scbdd.com/"
+          },
+          {
+            "name": "Molecular Visualization",
+            "description": "3D molecular visualization and rendering tools.",
+            "apiBaseUrl": "https://3dmol.csb.pitt.edu/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "N/A (local)",
+            "license": "BSD 3-Clause",
+            "exampleQueries": [
+              "Visualize protein structure"
+            ],
+            "dataFormats": [
+              "PDB",
+              "SDF",
+              "JSON"
+            ],
+            "url": "https://3dmol.csb.pitt.edu/"
+          }
+        ],
+        "credentials": [
+          {
+            "name": "ChemSpider API Key",
+            "type": "api_key",
+            "required": true,
+            "description": "Required to access ChemSpider chemical data.",
+            "obtainUrl": "https://developer.rsc.org/",
+            "envVar": "CHEMSPIDER_API_KEY"
+          }
+        ],
+        "dependencies": []
+      },
+      {
+        "name": "life-sciences-immunology",
+        "version": "0.1.0",
+        "pypiPackage": "life-sciences-immunology",
+        "description": "MCP server for immunology databases including IEDB, ImmPort, IMGT, and abYsis.",
+        "domain": "Immunology",
+        "databases": [
+          {
+            "name": "IEDB",
+            "description": "Immune Epitope Database — epitope data for immune system research.",
+            "apiBaseUrl": "https://query-api.iedb.org/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Search epitopes by antigen"
+            ],
+            "dataFormats": [
+              "JSON",
+              "CSV"
+            ],
+            "url": "https://www.iedb.org/"
+          },
+          {
+            "name": "ImmPort",
+            "description": "Immunology Database and Analysis Portal — shared immunological data.",
+            "apiBaseUrl": "https://api.immport.org/",
+            "authRequired": true,
+            "credentialType": "username_password",
+            "rateLimits": "5 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Search shared datasets"
+            ],
+            "dataFormats": [
+              "JSON",
+              "TSV"
+            ],
+            "url": "https://www.immport.org/"
+          },
+          {
+            "name": "IMGT",
+            "description": "International ImMunoGeneTics Information System — immunoglobulin and T cell receptor data.",
+            "apiBaseUrl": "https://www.imgt.org/IMGT_vquest/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Academic use",
+            "exampleQueries": [
+              "Analyze immunoglobulin sequence"
+            ],
+            "dataFormats": [
+              "JSON",
+              "FASTA"
+            ],
+            "url": "https://www.imgt.org/"
+          },
+          {
+            "name": "abYsis",
+            "description": "Antibody structure and sequence analysis tool.",
+            "apiBaseUrl": "https://www.abysis.org/api/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Academic use",
+            "exampleQueries": [
+              "Analyze antibody sequence numbering"
+            ],
+            "dataFormats": [
+              "JSON"
+            ],
+            "url": "https://www.abysis.org/"
+          }
+        ],
+        "credentials": [
+          {
+            "name": "ImmPort Credentials",
+            "type": "username_password",
+            "required": true,
+            "description": "Required to access ImmPort shared datasets.",
+            "obtainUrl": "https://www.immport.org/registration",
+            "envVar": "IMMPORT_USERNAME"
+          }
+        ],
+        "dependencies": []
+      },
+      {
+        "name": "life-sciences-microbiology",
+        "version": "0.1.0",
+        "pypiPackage": "life-sciences-microbiology",
+        "description": "MCP server for microbiology and metagenomics databases including SILVA, Greengenes, QIIME 2, MG-RAST, BV-BRC, and CARD.",
+        "domain": "Microbiology and Metagenomics",
+        "databases": [
+          {
+            "name": "SILVA",
+            "description": "Ribosomal RNA gene database — curated 16S/18S/23S/28S rRNA sequences.",
+            "apiBaseUrl": "https://www.arb-silva.de/api/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "CC BY 4.0",
+            "exampleQueries": [
+              "Search rRNA sequences by taxonomy"
+            ],
+            "dataFormats": [
+              "FASTA",
+              "JSON"
+            ],
+            "url": "https://www.arb-silva.de/"
+          },
+          {
+            "name": "Greengenes",
+            "description": "16S rRNA gene database for microbial taxonomy.",
+            "apiBaseUrl": "https://greengenes.secondgenome.com/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Search by taxonomy"
+            ],
+            "dataFormats": [
+              "FASTA",
+              "JSON"
+            ],
+            "url": "https://greengenes.secondgenome.com/"
+          },
+          {
+            "name": "QIIME 2",
+            "description": "Microbiome bioinformatics platform — amplicon and metagenomics analysis.",
+            "apiBaseUrl": "https://qiime2.org/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "N/A (local)",
+            "license": "BSD 3-Clause",
+            "exampleQueries": [
+              "Run diversity analysis"
+            ],
+            "dataFormats": [
+              "BIOM",
+              "QZA",
+              "JSON"
+            ],
+            "url": "https://qiime2.org/"
+          },
+          {
+            "name": "MG-RAST",
+            "description": "Metagenomics analysis server — automated annotation of metagenomes.",
+            "apiBaseUrl": "https://api.mg-rast.org/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Search metagenomes by keyword"
+            ],
+            "dataFormats": [
+              "JSON",
+              "FASTA"
+            ],
+            "url": "https://www.mg-rast.org/"
+          },
+          {
+            "name": "BV-BRC",
+            "description": "Bacterial and Viral Bioinformatics Resource Center — pathogen data and analysis.",
+            "apiBaseUrl": "https://www.bv-brc.org/api/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Search genomes by species"
+            ],
+            "dataFormats": [
+              "JSON",
+              "FASTA",
+              "GFF"
+            ],
+            "url": "https://www.bv-brc.org/"
+          },
+          {
+            "name": "CARD",
+            "description": "Comprehensive Antibiotic Resistance Database — AMR gene and mutation data.",
+            "apiBaseUrl": "https://card.mcmaster.ca/api/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Search resistance genes",
+              "Analyze AMR determinants"
+            ],
+            "dataFormats": [
+              "JSON",
+              "FASTA"
+            ],
+            "url": "https://card.mcmaster.ca/"
+          }
+        ],
+        "credentials": [],
+        "dependencies": []
+      },
+      {
+        "name": "life-sciences-metabolomics",
+        "version": "0.1.0",
+        "pypiPackage": "life-sciences-metabolomics",
+        "description": "MCP server for metabolomics databases including HMDB, MetaboLights, METLIN, and MassBank.",
+        "domain": "Metabolomics",
+        "databases": [
+          {
+            "name": "HMDB",
+            "description": "Human Metabolome Database — metabolite data with biological roles.",
+            "apiBaseUrl": "https://hmdb.ca/api/v1/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Search metabolites by name"
+            ],
+            "dataFormats": [
+              "JSON",
+              "XML",
+              "SDF"
+            ],
+            "url": "https://hmdb.ca/"
+          },
+          {
+            "name": "MetaboLights",
+            "description": "Metabolomics experiments and derived data repository.",
+            "apiBaseUrl": "https://www.ebi.ac.uk/metabolights/ws/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "CC0 1.0",
+            "exampleQueries": [
+              "Search studies by keyword"
+            ],
+            "dataFormats": [
+              "JSON",
+              "mzML",
+              "ISA-Tab"
+            ],
+            "url": "https://www.ebi.ac.uk/metabolights/"
+          },
+          {
+            "name": "METLIN",
+            "description": "Metabolite and tandem mass spectrometry database.",
+            "apiBaseUrl": "https://metlin.scripps.edu/api/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Academic use",
+            "exampleQueries": [
+              "Search by exact mass"
+            ],
+            "dataFormats": [
+              "JSON"
+            ],
+            "url": "https://metlin.scripps.edu/"
+          },
+          {
+            "name": "MassBank",
+            "description": "Mass spectral database for metabolite identification.",
+            "apiBaseUrl": "https://massbank.eu/MassBank/api/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "CC BY 4.0",
+            "exampleQueries": [
+              "Search spectra by compound name"
+            ],
+            "dataFormats": [
+              "JSON",
+              "MSP"
+            ],
+            "url": "https://massbank.eu/"
+          }
+        ],
+        "credentials": [],
+        "dependencies": []
+      },
+      {
+        "name": "life-sciences-epigenomics",
+        "version": "0.1.0",
+        "pypiPackage": "life-sciences-epigenomics",
+        "description": "MCP server for epigenomics databases including IHEC, Roadmap Epigenomics, and MethBase.",
+        "domain": "Epigenomics",
+        "databases": [
+          {
+            "name": "IHEC",
+            "description": "International Human Epigenome Consortium — reference epigenome maps.",
+            "apiBaseUrl": "https://epigenomesportal.ca/ihec/api/v2/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Search epigenomes by tissue"
+            ],
+            "dataFormats": [
+              "JSON",
+              "BED",
+              "bigWig"
+            ],
+            "url": "https://epigenomesportal.ca/ihec/"
+          },
+          {
+            "name": "Roadmap Epigenomics",
+            "description": "NIH Roadmap Epigenomics — reference human epigenomes.",
+            "apiBaseUrl": "https://egg2.wustl.edu/roadmap/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Browse chromatin state maps"
+            ],
+            "dataFormats": [
+              "BED",
+              "bigWig",
+              "JSON"
+            ],
+            "url": "https://egg2.wustl.edu/roadmap/"
+          },
+          {
+            "name": "MethBase",
+            "description": "DNA methylation database — methylomes across species.",
+            "apiBaseUrl": "http://smithlabresearch.org/software/methbase/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Search methylation data by species"
+            ],
+            "dataFormats": [
+              "BED",
+              "JSON"
+            ],
+            "url": "http://smithlabresearch.org/software/methbase/"
+          }
+        ],
+        "credentials": [],
+        "dependencies": []
+      },
+      {
+        "name": "life-sciences-imaging",
+        "version": "0.1.0",
+        "pypiPackage": "life-sciences-imaging",
+        "description": "MCP server for imaging and microscopy tools including OMERO, CellProfiler, ImageJ, DICOM, BioImage Archive, IDR, and EMPIAR.",
+        "domain": "Imaging and Microscopy",
+        "databases": [
+          {
+            "name": "OMERO",
+            "description": "Open Microscopy Environment — image data management and analysis.",
+            "apiBaseUrl": "https://idr.openmicroscopy.org/api/v0/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Search images by project"
+            ],
+            "dataFormats": [
+              "OME-TIFF",
+              "JSON"
+            ],
+            "url": "https://www.openmicroscopy.org/omero/"
+          },
+          {
+            "name": "CellProfiler",
+            "description": "Cell image analysis software — automated cell phenotyping.",
+            "apiBaseUrl": "https://cellprofiler.org/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "N/A (local)",
+            "license": "BSD 3-Clause",
+            "exampleQueries": [
+              "Run cell segmentation pipeline"
+            ],
+            "dataFormats": [
+              "TIFF",
+              "CSV",
+              "JSON"
+            ],
+            "url": "https://cellprofiler.org/"
+          },
+          {
+            "name": "ImageJ",
+            "description": "Image processing and analysis platform for scientific images.",
+            "apiBaseUrl": "https://imagej.net/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "N/A (local)",
+            "license": "Public Domain",
+            "exampleQueries": [
+              "Process microscopy images"
+            ],
+            "dataFormats": [
+              "TIFF",
+              "PNG",
+              "JSON"
+            ],
+            "url": "https://imagej.net/"
+          },
+          {
+            "name": "DICOM",
+            "description": "Digital Imaging and Communications in Medicine — medical imaging standard.",
+            "apiBaseUrl": "https://dicomweb.example.org/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "10 req/s",
+            "license": "Open Standard",
+            "exampleQueries": [
+              "Query DICOM studies"
+            ],
+            "dataFormats": [
+              "DICOM",
+              "JSON"
+            ],
+            "url": "https://www.dicomstandard.org/"
+          },
+          {
+            "name": "BioImage Archive",
+            "description": "Open repository for biological image data.",
+            "apiBaseUrl": "https://www.ebi.ac.uk/biostudies/api/v1/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "CC0 1.0",
+            "exampleQueries": [
+              "Search image datasets"
+            ],
+            "dataFormats": [
+              "OME-TIFF",
+              "JSON"
+            ],
+            "url": "https://www.ebi.ac.uk/bioimage-archive/"
+          },
+          {
+            "name": "IDR",
+            "description": "Image Data Resource — reference image datasets from published studies.",
+            "apiBaseUrl": "https://idr.openmicroscopy.org/api/v0/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "CC BY 4.0",
+            "exampleQueries": [
+              "Browse reference image datasets"
+            ],
+            "dataFormats": [
+              "OME-TIFF",
+              "JSON"
+            ],
+            "url": "https://idr.openmicroscopy.org/"
+          },
+          {
+            "name": "EMPIAR",
+            "description": "Electron Microscopy Public Image Archive — EM map and image data.",
+            "apiBaseUrl": "https://www.ebi.ac.uk/empiar/api/v1/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "CC0 1.0",
+            "exampleQueries": [
+              "Search EM datasets"
+            ],
+            "dataFormats": [
+              "MRC",
+              "TIFF",
+              "JSON"
+            ],
+            "url": "https://www.ebi.ac.uk/empiar/"
+          }
+        ],
+        "credentials": [],
+        "dependencies": []
+      },
+      {
+        "name": "life-sciences-agriculture",
+        "version": "0.1.0",
+        "pypiPackage": "life-sciences-agriculture",
+        "description": "MCP server for agricultural and plant biology databases including Phytozome, TAIR, Gramene, and PlantGDB.",
+        "domain": "Agricultural and Plant Biology",
+        "databases": [
+          {
+            "name": "Phytozome",
+            "description": "Comparative genomics portal for green plants.",
+            "apiBaseUrl": "https://phytozome-next.jgi.doe.gov/api/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Search plant genes by keyword"
+            ],
+            "dataFormats": [
+              "JSON",
+              "FASTA",
+              "GFF"
+            ],
+            "url": "https://phytozome-next.jgi.doe.gov/"
+          },
+          {
+            "name": "TAIR",
+            "description": "The Arabidopsis Information Resource — Arabidopsis thaliana genome data.",
+            "apiBaseUrl": "https://www.arabidopsis.org/api/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Search Arabidopsis genes"
+            ],
+            "dataFormats": [
+              "JSON",
+              "FASTA"
+            ],
+            "url": "https://www.arabidopsis.org/"
+          },
+          {
+            "name": "Gramene",
+            "description": "Comparative genomics resource for crops and model plant species.",
+            "apiBaseUrl": "https://data.gramene.org/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Search crop genes by species"
+            ],
+            "dataFormats": [
+              "JSON",
+              "FASTA"
+            ],
+            "url": "https://www.gramene.org/"
+          },
+          {
+            "name": "PlantGDB",
+            "description": "Plant genome database — EST assemblies and gene structure annotations.",
+            "apiBaseUrl": "https://www.plantgdb.org/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Search plant ESTs"
+            ],
+            "dataFormats": [
+              "FASTA",
+              "JSON"
+            ],
+            "url": "https://www.plantgdb.org/"
+          }
+        ],
+        "credentials": [],
+        "dependencies": []
+      },
+      {
+        "name": "life-sciences-ecology",
+        "version": "0.1.0",
+        "pypiPackage": "life-sciences-ecology",
+        "description": "MCP server for ecology and environmental biology databases including GBIF, BOLD, iNaturalist, IUCN Red List, GenBank Env, and MGnify.",
+        "domain": "Ecology and Environmental Biology",
+        "databases": [
+          {
+            "name": "GBIF",
+            "description": "Global Biodiversity Information Facility — species occurrence records worldwide.",
+            "apiBaseUrl": "https://api.gbif.org/v1/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "10 req/s",
+            "license": "CC BY 4.0",
+            "exampleQueries": [
+              "Search occurrences by species",
+              "Get species taxonomy"
+            ],
+            "dataFormats": [
+              "JSON",
+              "DwC-A",
+              "CSV"
+            ],
+            "url": "https://www.gbif.org/"
+          },
+          {
+            "name": "BOLD",
+            "description": "Barcode of Life Data System — DNA barcode reference library.",
+            "apiBaseUrl": "https://v3.boldsystems.org/index.php/API_Public/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Search by taxonomy",
+              "Get barcode sequences"
+            ],
+            "dataFormats": [
+              "JSON",
+              "FASTA",
+              "TSV"
+            ],
+            "url": "https://www.boldsystems.org/"
+          },
+          {
+            "name": "iNaturalist",
+            "description": "Citizen science biodiversity observation platform.",
+            "apiBaseUrl": "https://api.inaturalist.org/v1/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "1 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Search observations by species"
+            ],
+            "dataFormats": [
+              "JSON"
+            ],
+            "url": "https://www.inaturalist.org/"
+          },
+          {
+            "name": "IUCN Red List",
+            "description": "International Union for Conservation of Nature — species conservation status.",
+            "apiBaseUrl": "https://apiv3.iucnredlist.org/api/v3/",
+            "authRequired": true,
+            "credentialType": "api_key",
+            "rateLimits": "5 req/s",
+            "license": "Non-commercial use",
+            "exampleQueries": [
+              "Get conservation status by species"
+            ],
+            "dataFormats": [
+              "JSON"
+            ],
+            "url": "https://www.iucnredlist.org/"
+          },
+          {
+            "name": "GenBank Env",
+            "description": "GenBank environmental sequences — eDNA and metagenomic sequences.",
+            "apiBaseUrl": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "3 req/s",
+            "license": "Public Domain",
+            "exampleQueries": [
+              "Search environmental sequences"
+            ],
+            "dataFormats": [
+              "FASTA",
+              "JSON"
+            ],
+            "url": "https://www.ncbi.nlm.nih.gov/genbank/"
+          },
+          {
+            "name": "MGnify",
+            "description": "EBI Metagenomics — analysis and archiving of metagenomic and metatranscriptomic data.",
+            "apiBaseUrl": "https://www.ebi.ac.uk/metagenomics/api/v1/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Search metagenome analyses"
+            ],
+            "dataFormats": [
+              "JSON",
+              "BIOM"
+            ],
+            "url": "https://www.ebi.ac.uk/metagenomics/"
+          }
+        ],
+        "credentials": [
+          {
+            "name": "IUCN Red List API Key",
+            "type": "api_key",
+            "required": true,
+            "description": "Required to access IUCN Red List conservation data.",
+            "obtainUrl": "https://apiv3.iucnredlist.org/api/v3/token",
+            "envVar": "IUCN_API_KEY"
+          }
+        ],
+        "dependencies": []
+      },
+      {
+        "name": "life-sciences-neuroscience",
+        "version": "0.1.0",
+        "pypiPackage": "life-sciences-neuroscience",
+        "description": "MCP server for neuroscience databases including Allen Brain Atlas, NeuroMorpho, OpenNeuro, and BrainMap.",
+        "domain": "Neuroscience",
+        "databases": [
+          {
+            "name": "Allen Brain Atlas",
+            "description": "Comprehensive gene expression atlas of the mouse and human brain.",
+            "apiBaseUrl": "https://api.brain-map.org/api/v2/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Search gene expression by brain region"
+            ],
+            "dataFormats": [
+              "JSON",
+              "SVG"
+            ],
+            "url": "https://portal.brain-map.org/"
+          },
+          {
+            "name": "NeuroMorpho",
+            "description": "Centralized repository of digitally reconstructed neurons.",
+            "apiBaseUrl": "https://neuromorpho.org/api/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Search neurons by brain region"
+            ],
+            "dataFormats": [
+              "JSON",
+              "SWC"
+            ],
+            "url": "https://neuromorpho.org/"
+          },
+          {
+            "name": "OpenNeuro",
+            "description": "Free and open platform for sharing neuroimaging data.",
+            "apiBaseUrl": "https://openneuro.org/crn/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "CC0 1.0",
+            "exampleQueries": [
+              "Search datasets by modality"
+            ],
+            "dataFormats": [
+              "JSON",
+              "NIfTI",
+              "BIDS"
+            ],
+            "url": "https://openneuro.org/"
+          },
+          {
+            "name": "BrainMap",
+            "description": "Database of published functional and structural neuroimaging experiments.",
+            "apiBaseUrl": "https://brainmap.org/api/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Academic use",
+            "exampleQueries": [
+              "Search experiments by brain region"
+            ],
+            "dataFormats": [
+              "JSON"
+            ],
+            "url": "https://brainmap.org/"
+          }
+        ],
+        "credentials": [],
+        "dependencies": []
+      },
+      {
+        "name": "life-sciences-cellbiology",
+        "version": "0.1.0",
+        "pypiPackage": "life-sciences-cellbiology",
+        "description": "MCP server for cell biology databases including Cell Atlas, CellxGene, and Single Cell Expression Atlas.",
+        "domain": "Cell Biology",
+        "databases": [
+          {
+            "name": "Cell Atlas",
+            "description": "Human Cell Atlas — comprehensive reference maps of all human cells.",
+            "apiBaseUrl": "https://data.humancellatlas.org/apis/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Search cell types by tissue"
+            ],
+            "dataFormats": [
+              "JSON",
+              "H5AD"
+            ],
+            "url": "https://data.humancellatlas.org/"
+          },
+          {
+            "name": "CellxGene",
+            "description": "Interactive explorer for single-cell transcriptomics data.",
+            "apiBaseUrl": "https://api.cellxgene.cziscience.com/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Search datasets by cell type",
+              "Get gene expression data"
+            ],
+            "dataFormats": [
+              "JSON",
+              "H5AD"
+            ],
+            "url": "https://cellxgene.cziscience.com/"
+          },
+          {
+            "name": "Single Cell Expression Atlas",
+            "description": "EBI single-cell gene expression across species and conditions.",
+            "apiBaseUrl": "https://www.ebi.ac.uk/gxa/sc/json/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Search experiments by species"
+            ],
+            "dataFormats": [
+              "JSON",
+              "TSV"
+            ],
+            "url": "https://www.ebi.ac.uk/gxa/sc/"
+          }
+        ],
+        "credentials": [],
+        "dependencies": []
+      },
+      {
+        "name": "life-sciences-healthcare",
+        "version": "0.1.0",
+        "pypiPackage": "life-sciences-healthcare",
+        "description": "MCP server for healthcare standards including FHIR, HL7, OMOP CDM, REDCap, and DICOMweb.",
+        "domain": "Healthcare Standards",
+        "databases": [
+          {
+            "name": "FHIR",
+            "description": "Fast Healthcare Interoperability Resources — modern healthcare data exchange standard.",
+            "apiBaseUrl": "https://hapi.fhir.org/baseR4/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "10 req/s",
+            "license": "Open Standard",
+            "exampleQueries": [
+              "Query Patient resources",
+              "Search Observations by code"
+            ],
+            "dataFormats": [
+              "JSON",
+              "XML"
+            ],
+            "url": "https://www.hl7.org/fhir/"
+          },
+          {
+            "name": "HL7",
+            "description": "Health Level Seven — messaging standards for clinical and administrative data.",
+            "apiBaseUrl": "https://hl7.org/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "N/A",
+            "license": "Open Standard",
+            "exampleQueries": [
+              "Parse HL7 v2 message",
+              "Generate ADT message"
+            ],
+            "dataFormats": [
+              "HL7v2",
+              "JSON"
+            ],
+            "url": "https://www.hl7.org/"
+          },
+          {
+            "name": "OMOP CDM",
+            "description": "Observational Medical Outcomes Partnership Common Data Model — standardized health data.",
+            "apiBaseUrl": "https://ohdsi.org/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "N/A",
+            "license": "Apache 2.0",
+            "exampleQueries": [
+              "Query standardized clinical data"
+            ],
+            "dataFormats": [
+              "JSON",
+              "CSV"
+            ],
+            "url": "https://ohdsi.github.io/CommonDataModel/"
+          },
+          {
+            "name": "REDCap",
+            "description": "Research Electronic Data Capture — clinical research data management.",
+            "apiBaseUrl": "https://redcap.example.org/api/",
+            "authRequired": true,
+            "credentialType": "api_key",
+            "rateLimits": "10 req/s",
+            "license": "Institutional license",
+            "exampleQueries": [
+              "Export records from project"
+            ],
+            "dataFormats": [
+              "JSON",
+              "CSV",
+              "XML"
+            ],
+            "url": "https://www.project-redcap.org/"
+          },
+          {
+            "name": "DICOMweb",
+            "description": "Web-based DICOM services for medical imaging data exchange.",
+            "apiBaseUrl": "https://dicomweb.example.org/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "10 req/s",
+            "license": "Open Standard",
+            "exampleQueries": [
+              "Query DICOM studies by patient"
+            ],
+            "dataFormats": [
+              "DICOM",
+              "JSON"
+            ],
+            "url": "https://www.dicomstandard.org/using/dicomweb"
+          }
+        ],
+        "credentials": [
+          {
+            "name": "REDCap API Token",
+            "type": "api_key",
+            "required": true,
+            "description": "Required to access REDCap project data.",
+            "obtainUrl": "https://www.project-redcap.org/",
+            "envVar": "REDCAP_API_TOKEN"
+          }
+        ],
+        "dependencies": []
+      },
+      {
+        "name": "life-sciences-biobanking",
+        "version": "0.1.0",
+        "pypiPackage": "life-sciences-biobanking",
+        "description": "MCP server for biobanking and sample management including BBMRI, BioSample, LIMS, Sample Inventory, and protocols.io.",
+        "domain": "Biobanking and Sample Management",
+        "databases": [
+          {
+            "name": "BBMRI",
+            "description": "Biobanking and BioMolecular Resources Research Infrastructure — European biobank directory.",
+            "apiBaseUrl": "https://directory.bbmri-eric.eu/api/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Search biobanks by country"
+            ],
+            "dataFormats": [
+              "JSON"
+            ],
+            "url": "https://www.bbmri-eric.eu/"
+          },
+          {
+            "name": "BioSample",
+            "description": "NCBI BioSample — descriptions of biological source materials.",
+            "apiBaseUrl": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "3 req/s",
+            "license": "Public Domain",
+            "exampleQueries": [
+              "Search samples by organism"
+            ],
+            "dataFormats": [
+              "JSON",
+              "XML"
+            ],
+            "url": "https://www.ncbi.nlm.nih.gov/biosample/"
+          },
+          {
+            "name": "LIMS",
+            "description": "Laboratory Information Management System — sample tracking and workflow management.",
+            "apiBaseUrl": "https://sila2.org/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "N/A",
+            "license": "Varies",
+            "exampleQueries": [
+              "Track sample through workflow"
+            ],
+            "dataFormats": [
+              "JSON",
+              "SiLA 2"
+            ],
+            "url": "https://sila2.org/"
+          },
+          {
+            "name": "Sample Inventory",
+            "description": "Sample inventory management — storage, retrieval, and tracking.",
+            "apiBaseUrl": "https://example.org/sample-inventory/api/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "N/A",
+            "license": "Varies",
+            "exampleQueries": [
+              "Search samples by barcode"
+            ],
+            "dataFormats": [
+              "JSON"
+            ],
+            "url": "https://example.org/sample-inventory/"
+          },
+          {
+            "name": "protocols.io",
+            "description": "Open-access repository for reproducible research protocols.",
+            "apiBaseUrl": "https://www.protocols.io/api/v4/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "CC BY 4.0",
+            "exampleQueries": [
+              "Search protocols by keyword"
+            ],
+            "dataFormats": [
+              "JSON"
+            ],
+            "url": "https://www.protocols.io/"
+          }
+        ],
+        "credentials": [],
+        "dependencies": []
+      },
+      {
+        "name": "life-sciences-pipelines",
+        "version": "0.1.0",
+        "pypiPackage": "life-sciences-pipelines",
+        "description": "MCP server for bioinformatics pipeline registries including nf-core, WDL, CWL, and GitHub community pipelines.",
+        "domain": "Pipelines",
+        "databases": [
+          {
+            "name": "nf-core index",
+            "description": "Curated collection of Nextflow bioinformatics pipelines.",
+            "apiBaseUrl": "https://nf-co.re/pipelines.json",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "10 req/s",
+            "license": "MIT",
+            "exampleQueries": [
+              "Search nf-core pipelines",
+              "Get pipeline details"
+            ],
+            "dataFormats": [
+              "JSON"
+            ],
+            "url": "https://nf-co.re/"
+          },
+          {
+            "name": "WDL index",
+            "description": "WDL pipeline index — GATK best practices and community workflows.",
+            "apiBaseUrl": "https://github.com/broadinstitute/warp",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "10 req/s",
+            "license": "BSD 3-Clause",
+            "exampleQueries": [
+              "Search WDL pipelines by analysis type"
+            ],
+            "dataFormats": [
+              "JSON",
+              "WDL"
+            ],
+            "url": "https://github.com/broadinstitute/warp"
+          },
+          {
+            "name": "CWL index",
+            "description": "Common Workflow Language pipeline index — community CWL workflows.",
+            "apiBaseUrl": "https://github.com/common-workflow-language/workflows",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "10 req/s",
+            "license": "Apache 2.0",
+            "exampleQueries": [
+              "Search CWL workflows"
+            ],
+            "dataFormats": [
+              "JSON",
+              "CWL"
+            ],
+            "url": "https://www.commonwl.org/"
+          },
+          {
+            "name": "GitHub pipeline index",
+            "description": "Community bioinformatics pipelines from GitHub repositories.",
+            "apiBaseUrl": "https://api.github.com/search/repositories",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "10 req/s",
+            "license": "Various",
+            "exampleQueries": [
+              "Search bioinformatics pipelines on GitHub"
+            ],
+            "dataFormats": [
+              "JSON"
+            ],
+            "url": "https://github.com/topics/bioinformatics-pipeline"
+          }
+        ],
+        "credentials": [],
+        "dependencies": []
+      },
+      {
+        "name": "life-sciences-datastandards",
+        "version": "0.1.0",
+        "pypiPackage": "life-sciences-datastandards",
+        "description": "MCP server for data standards and formats including MAGE-TAB, ISA-Tab, SBML, and BioPAX.",
+        "domain": "Data Standards and Formats",
+        "databases": [
+          {
+            "name": "MAGE-TAB",
+            "description": "MicroArray Gene Expression Tabular format — microarray experiment descriptions.",
+            "apiBaseUrl": "https://www.ebi.ac.uk/arrayexpress/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Standard",
+            "exampleQueries": [
+              "Parse MAGE-TAB file",
+              "Validate experiment metadata"
+            ],
+            "dataFormats": [
+              "MAGE-TAB",
+              "JSON"
+            ],
+            "url": "https://www.ebi.ac.uk/arrayexpress/"
+          },
+          {
+            "name": "ISA-Tab",
+            "description": "Investigation/Study/Assay Tabular format — experiment metadata framework.",
+            "apiBaseUrl": "https://isa-tools.org/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "N/A",
+            "license": "Open Standard",
+            "exampleQueries": [
+              "Parse ISA-Tab files",
+              "Generate ISA-Tab from metadata"
+            ],
+            "dataFormats": [
+              "ISA-Tab",
+              "JSON"
+            ],
+            "url": "https://isa-tools.org/"
+          },
+          {
+            "name": "SBML",
+            "description": "Systems Biology Markup Language — computational models of biological processes.",
+            "apiBaseUrl": "https://www.ebi.ac.uk/biomodels/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Standard",
+            "exampleQueries": [
+              "Parse SBML model",
+              "Validate model structure"
+            ],
+            "dataFormats": [
+              "SBML",
+              "XML",
+              "JSON"
+            ],
+            "url": "https://sbml.org/"
+          },
+          {
+            "name": "BioPAX",
+            "description": "Biological Pathway Exchange — standard for biological pathway data.",
+            "apiBaseUrl": "https://www.biopax.org/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "N/A",
+            "license": "Open Standard",
+            "exampleQueries": [
+              "Parse BioPAX pathway data"
+            ],
+            "dataFormats": [
+              "BioPAX",
+              "OWL",
+              "JSON"
+            ],
+            "url": "https://www.biopax.org/"
+          }
+        ],
+        "credentials": [],
+        "dependencies": []
+      },
+      {
+        "name": "life-sciences-cloud",
+        "version": "0.1.0",
+        "pypiPackage": "life-sciences-cloud",
+        "description": "MCP server for cloud and HPC integrations including AWS Batch, Terra, and Galaxy.",
+        "domain": "Cloud and HPC",
+        "databases": [
+          {
+            "name": "AWS Batch",
+            "description": "AWS Batch — managed batch computing for containerized workloads.",
+            "apiBaseUrl": "https://batch.amazonaws.com/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "10 req/s",
+            "license": "AWS Terms",
+            "exampleQueries": [
+              "Submit batch job",
+              "Query job status"
+            ],
+            "dataFormats": [
+              "JSON"
+            ],
+            "url": "https://aws.amazon.com/batch/"
+          },
+          {
+            "name": "Terra",
+            "description": "Cloud platform for biomedical research — workflows and data management.",
+            "apiBaseUrl": "https://api.firecloud.org/api/",
+            "authRequired": true,
+            "credentialType": "oauth",
+            "rateLimits": "5 req/s",
+            "license": "BSD 3-Clause",
+            "exampleQueries": [
+              "List workspaces",
+              "Submit workflow"
+            ],
+            "dataFormats": [
+              "JSON"
+            ],
+            "url": "https://terra.bio/"
+          },
+          {
+            "name": "Galaxy",
+            "description": "Open-source platform for data-intensive biomedical research.",
+            "apiBaseUrl": "https://usegalaxy.org/api/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "AFL 3.0",
+            "exampleQueries": [
+              "Search tools",
+              "Submit workflow"
+            ],
+            "dataFormats": [
+              "JSON"
+            ],
+            "url": "https://galaxyproject.org/"
+          }
+        ],
+        "credentials": [
+          {
+            "name": "Terra OAuth Token",
+            "type": "oauth",
+            "required": true,
+            "description": "Required to access Terra workspaces and workflows.",
+            "obtainUrl": "https://terra.bio/",
+            "envVar": "TERRA_TOKEN"
+          }
+        ],
+        "dependencies": []
+      },
+      {
+        "name": "life-sciences-aiml",
+        "version": "0.1.0",
+        "pypiPackage": "life-sciences-aiml",
+        "description": "MCP server for AI/ML tools for life sciences including ESM, AlphaFold predictions, and BioNLP.",
+        "domain": "AI/ML for Life Sciences",
+        "databases": [
+          {
+            "name": "ESM",
+            "description": "Evolutionary Scale Modeling — protein language models for embeddings and structure prediction.",
+            "apiBaseUrl": "https://api.esmatlas.com/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "1 req/s",
+            "license": "MIT",
+            "exampleQueries": [
+              "Get protein embeddings",
+              "Predict secondary structure"
+            ],
+            "dataFormats": [
+              "JSON",
+              "PDB"
+            ],
+            "url": "https://esmatlas.com/"
+          },
+          {
+            "name": "AlphaFold predictions",
+            "description": "AlphaFold structure prediction service — submit sequences for folding.",
+            "apiBaseUrl": "https://alphafold.ebi.ac.uk/api/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "1 req/min",
+            "license": "CC BY 4.0",
+            "exampleQueries": [
+              "Submit sequence for prediction",
+              "Check prediction status"
+            ],
+            "dataFormats": [
+              "PDB",
+              "mmCIF",
+              "JSON"
+            ],
+            "url": "https://alphafold.ebi.ac.uk/"
+          },
+          {
+            "name": "BioNLP",
+            "description": "Biomedical natural language processing — entity extraction and question answering.",
+            "apiBaseUrl": "https://bern2.korea.ac.kr/",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "5 req/s",
+            "license": "Open Access",
+            "exampleQueries": [
+              "Extract biomedical entities from text",
+              "Answer biomedical questions"
+            ],
+            "dataFormats": [
+              "JSON"
+            ],
+            "url": "https://bern2.korea.ac.kr/"
+          }
+        ],
+        "credentials": [],
+        "dependencies": []
+      }
+    ],
+    "skills": [
+      {
+        "name": "bioinformatics-file-formats",
+        "filename": "bioinformatics-file-formats.md",
+        "description": "Guide to common bioinformatics file formats: FASTA, FASTQ, BAM, VCF, GFF, BED, DICOM, SBML, BioPAX, MAGE-TAB, ISA-Tab.",
+        "domain": "Bioinformatics Analysis Tools"
+      },
+      {
+        "name": "genomics-pipeline-best-practices",
+        "filename": "genomics-pipeline-best-practices.md",
+        "description": "Best practices for genomics pipeline design, resource optimization, and error handling.",
+        "domain": "Genomics and Sequencing"
+      },
+      {
+        "name": "data-compliance",
+        "filename": "data-compliance.md",
+        "description": "Data compliance guidelines covering HIPAA, GDPR, GxP, MIAME, and MINSEQE standards.",
+        "domain": "Data Standards and Formats"
+      },
+      {
+        "name": "clinical-interoperability",
+        "filename": "clinical-interoperability.md",
+        "description": "Clinical data interoperability with FHIR, HL7, and OMOP CDM standards.",
+        "domain": "Healthcare Standards"
+      },
+      {
+        "name": "ecological-data-analysis",
+        "filename": "ecological-data-analysis.md",
+        "description": "Ecological data analysis covering species distribution modeling, biodiversity metrics, and eDNA analysis.",
+        "domain": "Ecology and Environmental Biology"
+      },
+      {
+        "name": "cheminformatics-best-practices",
+        "filename": "cheminformatics-best-practices.md",
+        "description": "Cheminformatics best practices covering SMILES, InChI, MOL formats, property calculation, and SAR analysis.",
+        "domain": "Computational Chemistry and Drug Discovery"
+      },
+      {
+        "name": "biomedical-imaging",
+        "filename": "biomedical-imaging.md",
+        "description": "Biomedical imaging guide covering preprocessing, segmentation, feature extraction, and DICOM handling.",
+        "domain": "Imaging and Microscopy"
+      },
+      {
+        "name": "immunology-vaccine-design",
+        "filename": "immunology-vaccine-design.md",
+        "description": "Immunology and vaccine design covering epitope prediction, MHC binding analysis, and antibody engineering.",
+        "domain": "Immunology"
+      },
+      {
+        "name": "metabolomics-analysis",
+        "filename": "metabolomics-analysis.md",
+        "description": "Metabolomics analysis covering metabolite identification, spectral matching, and pathway enrichment.",
+        "domain": "Metabolomics"
+      },
+      {
+        "name": "single-cell-analysis",
+        "filename": "single-cell-analysis.md",
+        "description": "Single-cell analysis covering QC, normalization, clustering, differential expression, and trajectory inference.",
+        "domain": "Cell Biology"
+      }
+    ],
+    "steeringFiles": [
+      {
+        "name": "variant-calling-pipeline",
+        "filename": "variant-calling-pipeline.md",
+        "description": "Step-by-step guide for setting up a variant calling pipeline with AWS HealthOmics.",
+        "domain": "Genomics and Sequencing",
+        "relatedMCPServers": [
+          "life-sciences-genomics",
+          "life-sciences-pipelines"
+        ]
+      },
+      {
+        "name": "gene-disease-associations",
+        "filename": "gene-disease-associations.md",
+        "description": "Workflow for cross-referencing gene-disease associations using ClinVar, OMIM, NCBI, HPO, and Disease Ontology.",
+        "domain": "Clinical and Pharma",
+        "relatedMCPServers": [
+          "life-sciences-genomics",
+          "life-sciences-clinical",
+          "life-sciences-ontologies"
+        ]
+      },
+      {
+        "name": "protein-structure-analysis",
+        "filename": "protein-structure-analysis.md",
+        "description": "Workflow for protein structure analysis using PDB, AlphaFold, UniProt, and CATH.",
+        "domain": "Structural Biology",
+        "relatedMCPServers": [
+          "life-sciences-structural",
+          "life-sciences-proteomics"
+        ]
+      },
+      {
+        "name": "pipeline-import-healthomics",
+        "filename": "pipeline-import-healthomics.md",
+        "description": "Guide for importing nf-core and WDL pipelines into AWS HealthOmics.",
+        "domain": "Pipelines",
+        "relatedMCPServers": [
+          "life-sciences-pipelines"
+        ]
+      },
+      {
+        "name": "resource-catalog-browsing",
+        "filename": "resource-catalog-browsing.md",
+        "description": "Guide for discovering and browsing the resource catalog by category, keyword, or resource type.",
+        "domain": "Bioinformatics Analysis Tools",
+        "relatedMCPServers": []
+      },
+      {
+        "name": "fhir-clinical-integration",
+        "filename": "fhir-clinical-integration.md",
+        "description": "Workflow for FHIR and OMOP CDM clinical data integration.",
+        "domain": "Healthcare Standards",
+        "relatedMCPServers": [
+          "life-sciences-healthcare"
+        ]
+      },
+      {
+        "name": "species-distribution-analysis",
+        "filename": "species-distribution-analysis.md",
+        "description": "Workflow for species distribution analysis using GBIF, IUCN Red List, and iNaturalist.",
+        "domain": "Ecology and Environmental Biology",
+        "relatedMCPServers": [
+          "life-sciences-ecology"
+        ]
+      },
+      {
+        "name": "metabolite-identification",
+        "filename": "metabolite-identification.md",
+        "description": "Workflow for metabolite identification using HMDB, MetaboLights, and MassBank.",
+        "domain": "Metabolomics",
+        "relatedMCPServers": [
+          "life-sciences-metabolomics"
+        ]
+      },
+      {
+        "name": "microbiome-analysis",
+        "filename": "microbiome-analysis.md",
+        "description": "Workflow for microbiome analysis using SILVA, QIIME 2, and MG-RAST.",
+        "domain": "Microbiology and Metagenomics",
+        "relatedMCPServers": [
+          "life-sciences-microbiology"
+        ]
+      },
+      {
+        "name": "compound-screening",
+        "filename": "compound-screening.md",
+        "description": "Workflow for compound screening using PubChem, ZINC, and RDKit.",
+        "domain": "Computational Chemistry and Drug Discovery",
+        "relatedMCPServers": [
+          "life-sciences-cheminformatics"
+        ]
+      },
+      {
+        "name": "biomedical-image-analysis",
+        "filename": "biomedical-image-analysis.md",
+        "description": "Workflow for biomedical image analysis using OMERO, CellProfiler, and ImageJ.",
+        "domain": "Imaging and Microscopy",
+        "relatedMCPServers": [
+          "life-sciences-imaging"
+        ]
+      },
+      {
+        "name": "molecular-docking",
+        "filename": "molecular-docking.md",
+        "description": "Workflow for molecular docking using AutoDock, SwissDock, and RDKit.",
+        "domain": "Computational Chemistry and Drug Discovery",
+        "relatedMCPServers": [
+          "life-sciences-cheminformatics"
+        ]
+      },
+      {
+        "name": "primer-design-cloning",
+        "filename": "primer-design-cloning.md",
+        "description": "Workflow for primer design and cloning using Primer3, PrimerBLAST, and REBASE.",
+        "domain": "Molecular Biology and Biochemistry",
+        "relatedMCPServers": [
+          "life-sciences-molbio"
+        ]
+      },
+      {
+        "name": "single-cell-rnaseq",
+        "filename": "single-cell-rnaseq.md",
+        "description": "Workflow for single-cell RNA-seq analysis using CellxGene and Single Cell Expression Atlas.",
+        "domain": "Cell Biology",
+        "relatedMCPServers": [
+          "life-sciences-cellbiology"
+        ]
+      },
+      {
+        "name": "epigenomics-analysis",
+        "filename": "epigenomics-analysis.md",
+        "description": "Workflow for epigenomics analysis using IHEC, Roadmap Epigenomics, and ENCODE.",
+        "domain": "Epigenomics",
+        "relatedMCPServers": [
+          "life-sciences-epigenomics",
+          "life-sciences-genomics"
+        ]
+      },
+      {
+        "name": "amr-analysis",
+        "filename": "amr-analysis.md",
+        "description": "Workflow for antimicrobial resistance analysis using CARD and BV-BRC.",
+        "domain": "Microbiology and Metagenomics",
+        "relatedMCPServers": [
+          "life-sciences-microbiology"
+        ]
+      }
+    ],
+    "pipelineRegistries": [
+      {
+        "name": "nf-core",
+        "workflowLanguage": "Nextflow",
+        "source": "nf-core",
+        "description": "Community-driven collection of curated Nextflow bioinformatics pipelines with standardized structure and testing."
+      },
+      {
+        "name": "GATK/Broad",
+        "workflowLanguage": "WDL",
+        "source": "Broad Institute",
+        "description": "GATK best practices pipelines from the Broad Institute for germline and somatic variant discovery."
+      },
+      {
+        "name": "CWL Community",
+        "workflowLanguage": "CWL",
+        "source": "CWL Community",
+        "description": "Community-maintained Common Workflow Language pipelines for bioinformatics analysis."
+      },
+      {
+        "name": "GitHub Community",
+        "workflowLanguage": "mixed",
+        "source": "GitHub Community",
+        "description": "Community bioinformatics pipelines from GitHub repositories with 100+ stars."
+      }
+    ]
+  },
+  "resourceCatalog": {
+    "entries": [
+      {
+        "id": "ncbi",
+        "name": "NCBI",
+        "description": "National Center for Biotechnology Information — gene, nucleotide, protein, and literature search.",
+        "category": "Genomics and Sequencing",
+        "resourceType": "database",
+        "url": "https://www.ncbi.nlm.nih.gov/",
+        "authRequired": false,
+        "credentialType": null,
+        "dataFormats": [
+          "FASTA",
+          "GenBank",
+          "JSON",
+          "XML"
+        ],
+        "usageInstructions": "Install life-sciences-genomics MCP server. Optionally set NCBI_API_KEY for higher rate limits.",
+        "mcpServer": "life-sciences-genomics",
+        "mcpServerInstalled": false,
+        "credentialsConfigured": false,
+        "status": "needs_setup",
+        "crossReferences": [],
+        "apiBaseUrl": null,
+        "rateLimits": null,
+        "license": null,
+        "exampleQueries": null,
+        "workflowLanguage": null,
+        "sourceRepository": null,
+        "pipelineVersion": null,
+        "requiredInputs": null,
+        "expectedOutputs": null
+      },
+      {
+        "id": "uniprot",
+        "name": "UniProt",
+        "description": "Universal Protein Resource — comprehensive protein sequence and functional information.",
+        "category": "Proteomics",
+        "resourceType": "database",
+        "url": "https://www.uniprot.org/",
+        "authRequired": false,
+        "credentialType": null,
+        "dataFormats": [
+          "JSON",
+          "FASTA",
+          "XML",
+          "TSV"
+        ],
+        "usageInstructions": "Install life-sciences-proteomics MCP server. No authentication required.",
+        "mcpServer": "life-sciences-proteomics",
+        "mcpServerInstalled": false,
+        "credentialsConfigured": false,
+        "status": "needs_setup",
+        "crossReferences": [],
+        "apiBaseUrl": null,
+        "rateLimits": null,
+        "license": null,
+        "exampleQueries": null,
+        "workflowLanguage": null,
+        "sourceRepository": null,
+        "pipelineVersion": null,
+        "requiredInputs": null,
+        "expectedOutputs": null
+      },
+      {
+        "id": "pdb",
+        "name": "PDB",
+        "description": "Protein Data Bank — 3D structural data of biological macromolecules.",
+        "category": "Structural Biology",
+        "resourceType": "database",
+        "url": "https://www.rcsb.org/",
+        "authRequired": false,
+        "credentialType": null,
+        "dataFormats": [
+          "PDB",
+          "mmCIF",
+          "JSON"
+        ],
+        "usageInstructions": "Install life-sciences-structural MCP server. No authentication required.",
+        "mcpServer": "life-sciences-structural",
+        "mcpServerInstalled": false,
+        "credentialsConfigured": false,
+        "status": "needs_setup",
+        "crossReferences": [],
+        "apiBaseUrl": null,
+        "rateLimits": null,
+        "license": null,
+        "exampleQueries": null,
+        "workflowLanguage": null,
+        "sourceRepository": null,
+        "pipelineVersion": null,
+        "requiredInputs": null,
+        "expectedOutputs": null
+      },
+      {
+        "id": "clinvar",
+        "name": "ClinVar",
+        "description": "Public archive of reports on relationships between human variation and phenotypes.",
+        "category": "Genomics and Sequencing",
+        "resourceType": "database",
+        "url": "https://www.ncbi.nlm.nih.gov/clinvar/",
+        "authRequired": false,
+        "credentialType": null,
+        "dataFormats": [
+          "JSON",
+          "XML",
+          "VCF"
+        ],
+        "usageInstructions": "Install life-sciences-genomics MCP server. No authentication required.",
+        "mcpServer": "life-sciences-genomics",
+        "mcpServerInstalled": false,
+        "credentialsConfigured": false,
+        "status": "needs_setup",
+        "crossReferences": [],
+        "apiBaseUrl": null,
+        "rateLimits": null,
+        "license": null,
+        "exampleQueries": null,
+        "workflowLanguage": null,
+        "sourceRepository": null,
+        "pipelineVersion": null,
+        "requiredInputs": null,
+        "expectedOutputs": null
+      },
+      {
+        "id": "drugbank",
+        "name": "DrugBank",
+        "description": "Comprehensive drug and drug target database.",
+        "category": "Clinical and Pharma",
+        "resourceType": "database",
+        "url": "https://go.drugbank.com/",
+        "authRequired": true,
+        "credentialType": "api_key",
+        "dataFormats": [
+          "JSON",
+          "XML"
+        ],
+        "usageInstructions": "Install life-sciences-clinical MCP server and configure DRUGBANK_API_KEY.",
+        "mcpServer": "life-sciences-clinical",
+        "mcpServerInstalled": false,
+        "credentialsConfigured": false,
+        "status": "needs_setup",
+        "crossReferences": [],
+        "apiBaseUrl": null,
+        "rateLimits": null,
+        "license": null,
+        "exampleQueries": null,
+        "workflowLanguage": null,
+        "sourceRepository": null,
+        "pipelineVersion": null,
+        "requiredInputs": null,
+        "expectedOutputs": null
+      },
+      {
+        "id": "kegg",
+        "name": "KEGG",
+        "description": "Kyoto Encyclopedia of Genes and Genomes — pathway maps and molecular interaction networks.",
+        "category": "Pathways and Interactions",
+        "resourceType": "database",
+        "url": "https://www.kegg.jp/",
+        "authRequired": false,
+        "credentialType": null,
+        "dataFormats": [
+          "JSON",
+          "KGML",
+          "TSV"
+        ],
+        "usageInstructions": "Install life-sciences-pathways MCP server. No authentication required.",
+        "mcpServer": "life-sciences-pathways",
+        "mcpServerInstalled": false,
+        "credentialsConfigured": false,
+        "status": "needs_setup",
+        "crossReferences": [],
+        "apiBaseUrl": null,
+        "rateLimits": null,
+        "license": null,
+        "exampleQueries": null,
+        "workflowLanguage": null,
+        "sourceRepository": null,
+        "pipelineVersion": null,
+        "requiredInputs": null,
+        "expectedOutputs": null
+      },
+      {
+        "id": "gbif",
+        "name": "GBIF",
+        "description": "Global Biodiversity Information Facility — species occurrence records worldwide.",
+        "category": "Ecology and Environmental Biology",
+        "resourceType": "database",
+        "url": "https://www.gbif.org/",
+        "authRequired": false,
+        "credentialType": null,
+        "dataFormats": [
+          "JSON",
+          "DwC-A",
+          "CSV"
+        ],
+        "usageInstructions": "Install life-sciences-ecology MCP server. No authentication required.",
+        "mcpServer": "life-sciences-ecology",
+        "mcpServerInstalled": false,
+        "credentialsConfigured": false,
+        "status": "needs_setup",
+        "crossReferences": [],
+        "apiBaseUrl": null,
+        "rateLimits": null,
+        "license": null,
+        "exampleQueries": null,
+        "workflowLanguage": null,
+        "sourceRepository": null,
+        "pipelineVersion": null,
+        "requiredInputs": null,
+        "expectedOutputs": null
+      },
+      {
+        "id": "pubchem",
+        "name": "PubChem",
+        "description": "Open chemistry database — chemical structures, properties, and bioactivities.",
+        "category": "Computational Chemistry and Drug Discovery",
+        "resourceType": "database",
+        "url": "https://pubchem.ncbi.nlm.nih.gov/",
+        "authRequired": false,
+        "credentialType": null,
+        "dataFormats": [
+          "JSON",
+          "SDF",
+          "SMILES"
+        ],
+        "usageInstructions": "Install life-sciences-cheminformatics MCP server. No authentication required.",
+        "mcpServer": "life-sciences-cheminformatics",
+        "mcpServerInstalled": false,
+        "credentialsConfigured": false,
+        "status": "needs_setup",
+        "crossReferences": [],
+        "apiBaseUrl": null,
+        "rateLimits": null,
+        "license": null,
+        "exampleQueries": null,
+        "workflowLanguage": null,
+        "sourceRepository": null,
+        "pipelineVersion": null,
+        "requiredInputs": null,
+        "expectedOutputs": null
+      },
+      {
+        "id": "hmdb",
+        "name": "HMDB",
+        "description": "Human Metabolome Database — metabolite data with biological roles.",
+        "category": "Metabolomics",
+        "resourceType": "database",
+        "url": "https://hmdb.ca/",
+        "authRequired": false,
+        "credentialType": null,
+        "dataFormats": [
+          "JSON",
+          "XML",
+          "SDF"
+        ],
+        "usageInstructions": "Install life-sciences-metabolomics MCP server. No authentication required.",
+        "mcpServer": "life-sciences-metabolomics",
+        "mcpServerInstalled": false,
+        "credentialsConfigured": false,
+        "status": "needs_setup",
+        "crossReferences": [],
+        "apiBaseUrl": null,
+        "rateLimits": null,
+        "license": null,
+        "exampleQueries": null,
+        "workflowLanguage": null,
+        "sourceRepository": null,
+        "pipelineVersion": null,
+        "requiredInputs": null,
+        "expectedOutputs": null
+      },
+      {
+        "id": "fhir",
+        "name": "FHIR",
+        "description": "Fast Healthcare Interoperability Resources — modern healthcare data exchange standard.",
+        "category": "Healthcare Standards",
+        "resourceType": "database",
+        "url": "https://www.hl7.org/fhir/",
+        "authRequired": false,
+        "credentialType": null,
+        "dataFormats": [
+          "JSON",
+          "XML"
+        ],
+        "usageInstructions": "Install life-sciences-healthcare MCP server. Configure FHIR server endpoint.",
+        "mcpServer": "life-sciences-healthcare",
+        "mcpServerInstalled": false,
+        "credentialsConfigured": false,
+        "status": "needs_setup",
+        "crossReferences": [],
+        "apiBaseUrl": null,
+        "rateLimits": null,
+        "license": null,
+        "exampleQueries": null,
+        "workflowLanguage": null,
+        "sourceRepository": null,
+        "pipelineVersion": null,
+        "requiredInputs": null,
+        "expectedOutputs": null
+      },
+      {
+        "id": "allen-brain-atlas",
+        "name": "Allen Brain Atlas",
+        "description": "Comprehensive gene expression atlas of the mouse and human brain.",
+        "category": "Neuroscience",
+        "resourceType": "database",
+        "url": "https://portal.brain-map.org/",
+        "authRequired": false,
+        "credentialType": null,
+        "dataFormats": [
+          "JSON",
+          "SVG"
+        ],
+        "usageInstructions": "Install life-sciences-neuroscience MCP server. No authentication required.",
+        "mcpServer": "life-sciences-neuroscience",
+        "mcpServerInstalled": false,
+        "credentialsConfigured": false,
+        "status": "needs_setup",
+        "crossReferences": [],
+        "apiBaseUrl": null,
+        "rateLimits": null,
+        "license": null,
+        "exampleQueries": null,
+        "workflowLanguage": null,
+        "sourceRepository": null,
+        "pipelineVersion": null,
+        "requiredInputs": null,
+        "expectedOutputs": null
+      },
+      {
+        "id": "cellxgene",
+        "name": "CellxGene",
+        "description": "Interactive explorer for single-cell transcriptomics data.",
+        "category": "Cell Biology",
+        "resourceType": "database",
+        "url": "https://cellxgene.cziscience.com/",
+        "authRequired": false,
+        "credentialType": null,
+        "dataFormats": [
+          "JSON",
+          "H5AD"
+        ],
+        "usageInstructions": "Install life-sciences-cellbiology MCP server. No authentication required.",
+        "mcpServer": "life-sciences-cellbiology",
+        "mcpServerInstalled": false,
+        "credentialsConfigured": false,
+        "status": "needs_setup",
+        "crossReferences": [],
+        "apiBaseUrl": null,
+        "rateLimits": null,
+        "license": null,
+        "exampleQueries": null,
+        "workflowLanguage": null,
+        "sourceRepository": null,
+        "pipelineVersion": null,
+        "requiredInputs": null,
+        "expectedOutputs": null
+      },
+      {
+        "id": "nfcore-rnaseq",
+        "name": "nf-core/rnaseq",
+        "description": "Curated Nextflow pipeline for RNA-seq analysis with multiple aligners and quantification tools.",
+        "category": "Pipelines",
+        "resourceType": "pipeline",
+        "url": "https://nf-co.re/rnaseq",
+        "authRequired": false,
+        "credentialType": null,
+        "dataFormats": [
+          "FASTQ",
+          "BAM",
+          "counts"
+        ],
+        "usageInstructions": "Install life-sciences-pipelines MCP server. Use pipeline-import-healthomics steering file to import into HealthOmics.",
+        "mcpServer": "life-sciences-pipelines",
+        "mcpServerInstalled": false,
+        "credentialsConfigured": false,
+        "status": "needs_setup",
+        "crossReferences": [],
+        "apiBaseUrl": null,
+        "rateLimits": null,
+        "license": null,
+        "exampleQueries": null,
+        "workflowLanguage": null,
+        "sourceRepository": null,
+        "pipelineVersion": null,
+        "requiredInputs": null,
+        "expectedOutputs": null
+      },
+      {
+        "id": "card",
+        "name": "CARD",
+        "description": "Comprehensive Antibiotic Resistance Database — AMR gene and mutation data.",
+        "category": "Microbiology and Metagenomics",
+        "resourceType": "database",
+        "url": "https://card.mcmaster.ca/",
+        "authRequired": false,
+        "credentialType": null,
+        "dataFormats": [
+          "JSON",
+          "FASTA"
+        ],
+        "usageInstructions": "Install life-sciences-microbiology MCP server. No authentication required.",
+        "mcpServer": "life-sciences-microbiology",
+        "mcpServerInstalled": false,
+        "credentialsConfigured": false,
+        "status": "needs_setup",
+        "crossReferences": [],
+        "apiBaseUrl": null,
+        "rateLimits": null,
+        "license": null,
+        "exampleQueries": null,
+        "workflowLanguage": null,
+        "sourceRepository": null,
+        "pipelineVersion": null,
+        "requiredInputs": null,
+        "expectedOutputs": null
+      },
+      {
+        "id": "esm",
+        "name": "ESM",
+        "description": "Evolutionary Scale Modeling — protein language models for embeddings and structure prediction.",
+        "category": "AI/ML for Life Sciences",
+        "resourceType": "database",
+        "url": "https://esmatlas.com/",
+        "authRequired": false,
+        "credentialType": null,
+        "dataFormats": [
+          "JSON",
+          "PDB"
+        ],
+        "usageInstructions": "Install life-sciences-aiml MCP server. No authentication required.",
+        "mcpServer": "life-sciences-aiml",
+        "mcpServerInstalled": false,
+        "credentialsConfigured": false,
+        "status": "needs_setup",
+        "crossReferences": [],
+        "apiBaseUrl": null,
+        "rateLimits": null,
+        "license": null,
+        "exampleQueries": null,
+        "workflowLanguage": null,
+        "sourceRepository": null,
+        "pipelineVersion": null,
+        "requiredInputs": null,
+        "expectedOutputs": null
+      }
+    ]
+  }
+}
