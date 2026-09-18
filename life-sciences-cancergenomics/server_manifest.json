@@ -1,0 +1,21 @@
+{
+  "name": "life-sciences-cancergenomics",
+  "version": "0.1.0",
+  "domain": "Cancer Genomics",
+  "databases": [
+    {
+      "name": "cBioPortal",
+      "tools": [
+        "cbioportal_search_studies",
+        "cbioportal_get_study_details",
+        "cbioportal_get_molecular_profiles",
+        "cbioportal_get_clinical_data",
+        "cbioportal_search_genes",
+        "cbioportal_compare_mutation_burden",
+        "cbioportal_list_cancer_types"
+      ],
+      "authRequired": false
+    }
+  ],
+  "credentials": []
+}

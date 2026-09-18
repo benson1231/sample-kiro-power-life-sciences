@@ -8,7 +8,7 @@ Kiro for Life Sciences follows a **Power + Modular MCP Servers** architecture. T
 
 ### What's Included
 
-- **24 domain MCP servers** covering 100+ life sciences databases and tools
+- **25 domain MCP servers** covering 100+ life sciences databases and tools
 - **10 domain skills** with practical guidance for common life sciences tasks
 - **16 steering files** with step-by-step workflow guides
 - **Resource catalog** — searchable, categorized index of all available resources
@@ -77,7 +77,7 @@ Activate domain skills for context-specific guidance. Steering files auto-activa
 └─────────────────────────────────────────────────────┘
 ```
 
-The Power does not contain MCP server implementations. It knows about all 24 servers declaratively through the bundle manifest and can show their status, provide setup instructions, and coordinate cross-database searches even when only a subset is installed.
+The Power does not contain MCP server implementations. It knows about all 25 servers declaratively through the bundle manifest and can show their status, provide setup instructions, and coordinate cross-database searches even when only a subset is installed.
 
 ## MCP Servers
 
@@ -482,6 +482,21 @@ The Power does not contain MCP server implementations. It knows about all 24 ser
 }
 ```
 
+### 25. life-sciences-cancergenomics
+**Domain:** Cancer Genomics
+**Databases:** cBioPortal
+**Tools:** 7 tools for cancer study search, molecular profiles, clinical data, gene lookups, cancer type browsing, and tumor mutation burden (TMB) analysis.
+**Auth:** None required (cBioPortal public API is open access).
+
+```json
+{
+  "life-sciences-cancergenomics": {
+    "command": "uvx",
+    "args": ["life-sciences-cancergenomics"]
+  }
+}
+```
+
 
 ## Skills
 
@@ -565,11 +580,12 @@ Search across all resources by keyword. Results are ranked by relevance:
 
 ### Browsing by Category
 
-Browse resources organized into 25 categories:
+Browse resources organized into 26 categories:
 
 | Category | Description |
 |----------|-------------|
 | Genomics and Sequencing | NCBI, Ensembl, ClinVar, GEO, SRA, COSMIC, gnomAD, dbSNP, ENCODE, 1000 Genomes, DDBJ |
+| Cancer Genomics | cBioPortal (studies, molecular profiles, clinical data, tumor mutation burden) |
 | Proteomics | UniProt, InterPro, Pfam, STRING, PRIDE, neXtProt |
 | Structural Biology | PDB, AlphaFold DB, CATH, SCOP |
 | Pathways and Interactions | KEGG, Reactome, BioCyc, WikiPathways, IntAct |
@@ -598,7 +614,7 @@ Browse resources organized into 25 categories:
 ### Filtering
 
 Filter resources by:
-- **Category**: Any of the 25 categories above.
+- **Category**: Any of the 26 categories above.
 - **Resource type**: `database`, `pipeline`, `tool`, `skill`, or `steering_file`.
 - **Auth requirement**: `authenticated` or `open_access`.
 
@@ -666,7 +682,7 @@ The variant calling and pipeline import steering files reference HealthOmics too
 
 ## Complete mcp.json Example
 
-Here's a full `mcp.json` configuration with all 24 MCP servers:
+Here's a full `mcp.json` configuration with all 25 MCP servers:
 
 ```json
 {
@@ -800,9 +816,13 @@ Here's a full `mcp.json` configuration with all 24 MCP servers:
     "life-sciences-aiml": {
       "command": "uvx",
       "args": ["life-sciences-aiml"]
+    },
+    "life-sciences-cancergenomics": {
+      "command": "uvx",
+      "args": ["life-sciences-cancergenomics"]
     }
   }
 }
 ```
 
-You don't need to install all 24 servers. Add only the ones relevant to your work. The resource catalog and dashboard will show the status of all servers regardless of which are installed.
+You don't need to install all 25 servers. Add only the ones relevant to your work. The resource catalog and dashboard will show the status of all servers regardless of which are installed.

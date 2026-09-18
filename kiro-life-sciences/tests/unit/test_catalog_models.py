@@ -75,12 +75,13 @@ def _pipeline_entry(**overrides) -> dict:
 class TestResourceCategory:
     """Tests for the ResourceCategory enum."""
 
-    def test_has_25_categories(self):
-        assert len(ResourceCategory) == 25
+    def test_has_26_categories(self):
+        assert len(ResourceCategory) == 26
 
     def test_all_expected_categories_present(self):
         expected = [
             "Genomics and Sequencing",
+            "Cancer Genomics",
             "Proteomics",
             "Pathways and Interactions",
             "Ontologies",

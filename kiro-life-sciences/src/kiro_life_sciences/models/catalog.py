@@ -24,9 +24,10 @@ from pydantic import BaseModel, ConfigDict, Field
 
 
 class ResourceCategory(StrEnum):
-    """All 25 resource categories defined in the design document."""
+    """All 26 resource categories defined in the design document."""
 
     GENOMICS_AND_SEQUENCING = "Genomics and Sequencing"
+    CANCER_GENOMICS = "Cancer Genomics"
     PROTEOMICS = "Proteomics"
     PATHWAYS_AND_INTERACTIONS = "Pathways and Interactions"
     ONTOLOGIES = "Ontologies"
