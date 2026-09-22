@@ -3,12 +3,12 @@
 Kiro for Life Sciences is a comprehensive Power package that turns Kiro into
 a full-featured life sciences development environment. It provides:
 
-• 24 modular MCP servers covering 100+ databases, tools, and platforms across
+• 25 modular MCP servers covering 100+ databases, tools, and platforms across
   ALL life sciences disciplines — not just genomics
 • 10 domain skills with practical guidance for bioinformatics, clinical data,
   ecology, cheminformatics, imaging, immunology, metabolomics, and more
 • 16 guided workflows (steering files) for common multi-step tasks
-• A searchable resource catalog with 25 categories
+• A searchable resource catalog with 26 categories
 • An onboarding dashboard showing everything available at a glance
 • Cross-database search that queries multiple databases simultaneously
 • Integration with AWS HealthOmics for running genomics pipelines
@@ -19,7 +19,7 @@ package runnable via `uvx`.
 
 **Disciplines covered:**
 
-Genomics & Sequencing | Proteomics | Structural Biology | Pathways |
+Genomics & Sequencing | Cancer Genomics | Proteomics | Structural Biology | Pathways |
 Ontologies | Clinical & Pharma | Model Organisms | Molecular Biology |
 Computational Chemistry | Immunology | Microbiology & Metagenomics |
 Metabolomics | Epigenomics | Imaging & Microscopy | Agriculture & Plants |
@@ -94,6 +94,7 @@ uv pip install -e ./life-sciences-pipelines
 uv pip install -e ./life-sciences-datastandards
 uv pip install -e ./life-sciences-cloud
 uv pip install -e ./life-sciences-aiml
+uv pip install -e ./life-sciences-cancergenomics
 ```
 
 ### Step 3: Copy the Power into Kiro
@@ -198,6 +199,7 @@ Expected: 338+ tests passing for kiro-life-sciences, 32 for life-sciences-common
 | 22 | **life-sciences-datastandards** | MAGE-TAB, ISA-Tab, SBML, BioPAX | 7 | None |
 | 23 | **life-sciences-cloud** | AWS Batch, Terra, Galaxy | 7 | TERRA_TOKEN |
 | 24 | **life-sciences-aiml** | ESM, AlphaFold, BioNLP (BioGPT/PubMedBERT) | 6 | None |
+| 25 | **life-sciences-cancergenomics** | cBioPortal | 7 | None |
 
 ### Domain Skills (10)
 
@@ -277,7 +279,7 @@ Expected: 338+ tests passing for kiro-life-sciences, 32 for life-sciences-common
 │  └──────────────┘ └──────────────┘ └──────────────────┘    │
 │  ┌──────────────┐ ┌──────────────┐ ┌──────────────────┐    │
 │  │   Skills     │ │   Steering   │ │ Bundle Manifest  │    │
-│  │  (10 Guides) │ │ (16 Workflows│ │ (24 Servers)     │    │
+│  │  (10 Guides) │ │ (16 Workflows│ │ (25 Servers)     │    │
 │  └──────────────┘ └──────────────┘ └──────────────────┘    │
 ├─────────────────────────────────────────────────────────────┤
 │         Modular MCP Servers (Install as Needed via uvx)     │
@@ -298,7 +300,7 @@ Expected: 338+ tests passing for kiro-life-sciences, 32 for life-sciences-common
 |-----------|-------------|
 | `POWER.md` | Documentation and getting-started guide |
 | `pyproject.toml` | Package config (pydantic, httpx, pytest, hypothesis) |
-| `bundle-manifest.json` | Declares all 24 MCP servers, 10 skills, 16 steering files |
+| `bundle-manifest.json` | Declares all 25 MCP servers, 10 skills, 16 steering files |
 | `skills/` | 10 domain-specific skill files |
 | `steering/` | 16 step-by-step workflow guides |
 | `src/kiro_life_sciences/` | Core Python modules (catalog, dashboard, credentials, installer, skills) |

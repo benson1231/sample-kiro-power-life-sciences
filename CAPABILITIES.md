@@ -6,7 +6,7 @@ The **Kiro Life Sciences Power** is a comprehensive, modular platform that bring
 
 ### What Makes This Unique
 
-- **Modular Architecture**: Install only what you need. Each of the 24 MCP servers is independently deployable via `uvx`, keeping your environment lightweight while providing access to the full ecosystem.
+- **Modular Architecture**: Install only what you need. Each of the 25 MCP servers is independently deployable via `uvx`, keeping your environment lightweight while providing access to the full ecosystem.
 - **Unified Access**: Query 100+ databases through a single interface with consistent authentication, error handling, and result formatting.
 - **Cross-Database Intelligence**: Perform parallel searches across multiple databases simultaneously, with automatic result aggregation and graceful degradation.
 - **Context-Aware Workflows**: 16 steering files auto-activate based on your workspace files, guiding you through complex multi-step workflows.
@@ -17,7 +17,7 @@ The **Kiro Life Sciences Power** is a comprehensive, modular platform that bring
 
 | Metric | Count |
 |--------|-------|
-| **MCP Servers** | 24 modular servers |
+| **MCP Servers** | 25 modular servers |
 | **Databases** | 100+ life sciences databases |
 | **Tools** | 250+ bioinformatics tools |
 | **Domain Skills** | 10 expert guidance modules |
@@ -29,7 +29,7 @@ The **Kiro Life Sciences Power** is a comprehensive, modular platform that bring
 
 ## 🧬 Complete MCP Server & Database Coverage
 
-This table shows all 24 MCP servers, the databases and tools they provide access to, approximate tool counts, and authentication requirements.
+This table shows all 25 MCP servers, the databases and tools they provide access to, approximate tool counts, and authentication requirements.
 
 | # | Server Name | Domain | Databases/Tools Covered | Tool Count | Auth Required |
 |---|-------------|--------|------------------------|------------|---------------|
@@ -57,6 +57,7 @@ This table shows all 24 MCP servers, the databases and tools they provide access
 | 22 | **life-sciences-datastandards** | Data Standards & Formats | MAGE-TAB, ISA-Tab, SBML, BioPAX | ~9 | No |
 | 23 | **life-sciences-cloud** | Cloud & HPC | AWS Batch, Terra, Galaxy | ~12 | Required (Terra), Optional (Galaxy) |
 | 24 | **life-sciences-aiml** | AI/ML for Life Sciences | ESM, AlphaFold predictions, BioNLP | ~10 | No |
+| 25 | **life-sciences-cancergenomics** | Cancer Genomics | cBioPortal | ~7 | No |
 
 **Total: ~250+ tools across 100+ databases**
 
@@ -131,9 +132,9 @@ Some databases require API keys or authentication. This table shows all credenti
 
 ---
 
-## 📂 Resource Categories (25 Organized Domains)
+## 📂 Resource Categories (26 Organized Domains)
 
-All databases, tools, and resources are organized into 25 categories for easy discovery and browsing:
+All databases, tools, and resources are organized into 26 categories for easy discovery and browsing:
 
 | # | Category | Representative Databases/Tools |
 |---|----------|-------------------------------|
@@ -162,6 +163,7 @@ All databases, tools, and resources are organized into 25 categories for easy di
 | 23 | **Data Standards and Formats** | MAGE-TAB, ISA-Tab, SBML, BioPAX |
 | 24 | **Cloud and HPC** | AWS Batch, Terra (Broad Institute), Galaxy |
 | 25 | **AI/ML for Life Sciences** | ESM (protein language models), AlphaFold predictions, BioNLP |
+| 26 | **Cancer Genomics** | cBioPortal (studies, molecular profiles, clinical data, tumor mutation burden) |
 
 ---
 
@@ -228,7 +230,7 @@ The cross-database search feature orchestrates parallel queries across multiple 
 
 ### Key Architectural Principles
 
-- **Modular by Design**: The Power hub doesn't contain MCP server implementations—it knows about all 24 servers declaratively through the bundle manifest
+- **Modular by Design**: The Power hub doesn't contain MCP server implementations—it knows about all 25 servers declaratively through the bundle manifest
 - **Install What You Need**: Each MCP server is independently deployable via `uvx`. Install only the domains relevant to your work
 - **Unified Interface**: Consistent authentication, error handling, and result formatting across all databases
 - **Graceful Degradation**: The system works even when only a subset of servers is installed

@@ -2474,6 +2474,34 @@
         ],
         "credentials": [],
         "dependencies": []
+      },
+      {
+        "name": "life-sciences-cancergenomics",
+        "version": "0.1.0",
+        "pypiPackage": "life-sciences-cancergenomics",
+        "description": "MCP server for cancer genomics data from cBioPortal — studies, molecular profiles, clinical data, gene lookups, cancer types, and tumor mutation burden analysis.",
+        "domain": "Cancer Genomics",
+        "databases": [
+          {
+            "name": "cBioPortal",
+            "description": "cBioPortal for Cancer Genomics — interactive exploration of multidimensional cancer genomics data sets including mutations, copy number, expression, and clinical data.",
+            "apiBaseUrl": "https://www.cbioportal.org/api",
+            "authRequired": false,
+            "credentialType": null,
+            "rateLimits": "No published limit; be considerate",
+            "license": "Open Access (ODC-By 1.0)",
+            "exampleQueries": [
+              "Search studies for melanoma",
+              "Compare tumor mutation burden across a study"
+            ],
+            "dataFormats": [
+              "JSON"
+            ],
+            "url": "https://www.cbioportal.org/"
+          }
+        ],
+        "credentials": [],
+        "dependencies": []
       }
     ],
     "skills": [
@@ -3148,6 +3176,34 @@
         ],
         "usageInstructions": "Install life-sciences-aiml MCP server. No authentication required.",
         "mcpServer": "life-sciences-aiml",
+        "mcpServerInstalled": false,
+        "credentialsConfigured": false,
+        "status": "needs_setup",
+        "crossReferences": [],
+        "apiBaseUrl": null,
+        "rateLimits": null,
+        "license": null,
+        "exampleQueries": null,
+        "workflowLanguage": null,
+        "sourceRepository": null,
+        "pipelineVersion": null,
+        "requiredInputs": null,
+        "expectedOutputs": null
+      },
+      {
+        "id": "cbioportal",
+        "name": "cBioPortal",
+        "description": "cBioPortal for Cancer Genomics — interactive exploration of multidimensional cancer genomics data sets including mutations, copy number, expression, and clinical data.",
+        "category": "Cancer Genomics",
+        "resourceType": "database",
+        "url": "https://www.cbioportal.org/",
+        "authRequired": false,
+        "credentialType": null,
+        "dataFormats": [
+          "JSON"
+        ],
+        "usageInstructions": "Install life-sciences-cancergenomics MCP server. No authentication required.",
+        "mcpServer": "life-sciences-cancergenomics",
         "mcpServerInstalled": false,
         "credentialsConfigured": false,
         "status": "needs_setup",
